@@ -1,0 +1,29 @@
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import * as N from './NavStyle';
+
+const Nav = () => {
+  const [Title, setTitle] = useState('');
+  const location = useLocation(null);
+
+  useEffect(() => {
+    setTitle(location.pathname.slice(1).toUpperCase());
+  });
+
+  return (
+    <N.NavWrapper>
+      <N.NavContent>
+        <N.NavTag href="/project">PROJECT</N.NavTag>
+        <N.NavTag href="/guestbook">GUESTBOOK</N.NavTag>
+        <N.NavTag href="/project">CHATBOT</N.NavTag>
+        <N.NavTag href="/project">QR-CODE</N.NavTag>
+        <N.NavTag href="/developer">DEVELOPER</N.NavTag>
+      </N.NavContent>
+      <N.LogoImg>
+        <N.Text>{Title}</N.Text>
+      </N.LogoImg>
+    </N.NavWrapper>
+  );
+};
+
+export default Nav;

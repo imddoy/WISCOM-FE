@@ -4,11 +4,13 @@ import Main from './page/Main';
 import Guestbook from './page/Guestbook';
 import Project from './page/Project';
 import Developer from './page/Developer';
+import Nav from './components/common/Nav/Nav';
 
 export default function Router() {
   return (
     <>
       <BrowserRouter>
+        <Nav />
         <GlobalWrapper>
           <Routes>
             <Route path="/" element={<Main />} />
