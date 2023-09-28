@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import * as N from './NavStyle';
+import NavList from './NavList';
 
 const Nav = () => {
   const [Title, setTitle] = useState('');
@@ -18,7 +19,9 @@ const Nav = () => {
         <N.NavTag href="/project">CHATBOT</N.NavTag>
         <N.NavTag href="/project">QR-CODE</N.NavTag>
         <N.NavTag href="/developer">DEVELOPER</N.NavTag>
+        <NavList />
       </N.NavContent>
+
       <N.LogoImg>
         <N.Text>{Title}</N.Text>
       </N.LogoImg>
