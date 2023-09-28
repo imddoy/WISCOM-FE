@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { TimelineMax, Power1, Power4, Back } from 'gsap';
+import { TimelineMax, Power1, Power4, Back, Sine, gsap } from 'gsap';
 import './nav.css';
 
 const NavList = () => {
@@ -7,8 +7,58 @@ const NavList = () => {
   const menuInnerRef = useRef(null);
   const menuTriggerRef = useRef(null);
   const timelineRef = useRef(null);
+  const blursRef = useRef([]);
 
   useEffect(() => {
+    const randomX = random(-400, 400);
+    const randomY = random(-200, 200);
+    const randomDelay = random(0, 50);
+    const randomTime = random(6, 12);
+    const randomTime2 = random(5, 6);
+    const randomAngle = random(-30, 150);
+
+    const blurs = blursRef.current;
+    blurs.forEach((blur) => {
+      gsap.set(blur, {
+        x: randomX(-1),
+        y: randomX(1),
+        rotation: randomAngle(-1),
+      });
+
+      moveX(blur, 1);
+      moveY(blur, -1);
+      rotate(blur, 1);
+    });
+
+    function rotate(target, direction) {
+      gsap.to(target, randomTime2(), {
+        rotation: randomAngle(direction),
+        ease: Sine.easeInOut,
+        onComplete: () => rotate(target, direction * -1),
+      });
+    }
+
+    function moveX(target, direction) {
+      gsap.to(target, randomTime(), {
+        x: randomX(direction),
+        ease: Sine.easeInOut,
+        onComplete: () => moveX(target, direction * -1),
+      });
+    }
+
+    function moveY(target, direction) {
+      gsap.to(target, randomTime(), {
+        y: randomY(direction),
+        ease: Sine.easeInOut,
+        onComplete: () => moveY(target, direction * -1),
+      });
+    }
+
+    function random(min, max) {
+      const delta = max - min;
+      return (direction = 1) => (min + delta * Math.random()) * direction;
+    }
+
     const menuTrigger = menuTriggerRef.current;
 
     if (!menuTrigger) {
@@ -107,7 +157,6 @@ const NavList = () => {
     };
   }, [menuVisible]);
 
-  console.log(menuVisible);
   return (
     <>
       <div className={`menu__trigger`} ref={menuTriggerRef}>
@@ -116,6 +165,9 @@ const NavList = () => {
 
       <div className={`menu__inner js-menu-inner ${menuVisible ? 'active' : ''}`} ref={menuInnerRef}>
         <ul className="menu__inner-background js-menu-inner-background"></ul>
+        <div className="blur" ref={(el) => (blursRef.current[0] = el)} />
+        <div className="blur" ref={(el) => (blursRef.current[1] = el)} />
+        <div className="blur" ref={(el) => (blursRef.current[2] = el)} />
 
         <div className="menu__items-wrapper js-menu-items-wrapper">
           <ul className="menu__items-list js-menu-items-list">

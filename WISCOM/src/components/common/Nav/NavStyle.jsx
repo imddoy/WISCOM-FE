@@ -34,6 +34,7 @@ export const NavTag = styled.a`
 
   &:hover {
     color: white;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25) inset;
   }
 
   @media screen and (max-width: 900px) {
