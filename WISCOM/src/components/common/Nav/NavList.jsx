@@ -157,6 +157,31 @@ const NavList = () => {
     };
   }, [menuVisible]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const menuTrigger = menuTriggerRef.current;
+
+      if (!menuTrigger) {
+        return;
+      }
+
+      // 창의 크기가 900px를 초과하고 메뉴가 숨겨져 있는 경우에는 트리거를 보이게 설정
+      if (menuVisible) {
+        menuTrigger.style.display = 'flex';
+      } else if (window.innerWidth < 900 && menuVisible == false) {
+        menuTrigger.style.display = 'flex';
+      } else if (window.innerWidth >= 900 && menuVisible == false) {
+        menuTrigger.style.display = 'none';
+      }
+    }; // 처음 컴포넌트가 마운트될 때 이벤트 리스너 등록
+    window.addEventListener('resize', handleResize);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [menuVisible]);
+
   return (
     <>
       <div className={`menu__trigger`} ref={menuTriggerRef}>
@@ -182,6 +207,9 @@ const NavList = () => {
             </li>
             <li className="js-menu-item">
               <a href="#">QR-CODE</a>
+            </li>
+            <li className="js-menu-item">
+              <a href="/developer">DEVELOPER</a>
             </li>
           </ul>
         </div>
