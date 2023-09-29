@@ -1,0 +1,20 @@
+.developer-container {
+  margin: 0 auto;
+  align-items: center;
+  display: block;
+  font-size: 4rem;
+  color: #20217d;
+}
+
+.developer-up-box {
+  display: flex;
+}
+
+.developer-down-box {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.DeveloperProfile {
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
