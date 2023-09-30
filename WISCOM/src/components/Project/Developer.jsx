@@ -1,19 +1,20 @@
-import './Developer.css';
+import * as D from './ProjectStyle';
 import DeveloperProfile from './DeveloperProfile.jsx';
 
 const Developer = () => {
   return (
-    <div className="developer-container">
-      <h1>DEVELOPER</h1>
-      <div className="developer-up-box">
+    <D.DeveloperContainer>
+      <D.DeTitle>DEVELOPER</D.DeTitle>
+      <D.UpBox>
         <DeveloperProfile />
         <DeveloperProfile />
-      </div>
-      <div className="developer-down-box">
+      </D.UpBox>
+
+      <D.DownBox>
         <DeveloperProfile />
         <DeveloperProfile />
-      </div>
-    </div>
+      </D.DownBox>
+    </D.DeveloperContainer>
   );
 };
-export default DeveloperProfile;
+export default Developer;
