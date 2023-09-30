@@ -1,0 +1,13 @@
+.like-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* 가로 가운데 정렬 */
+}
+.like-box > img {
+  margin: 0 auto;
+  cursor: pointer;
+}
+.like-box span {
+  font-size: 90px;
+  font-weight: bold;
+}
