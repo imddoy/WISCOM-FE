@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TimelineMax, Power1, Power4, Back, Sine, gsap } from 'gsap';
 import './nav.css';
+import * as N from './NavListStyle';
 
 const NavList = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -184,36 +185,36 @@ const NavList = () => {
 
   return (
     <>
-      <div className={`menu__trigger`} ref={menuTriggerRef}>
-        <span>{menuVisible ? 'CLOSE' : 'MENU'}</span>
-      </div>
+      <N.MenuTrigger ref={menuTriggerRef}>
+        <N.MenuSpan>{menuVisible ? 'CLOSE' : 'MENU'}</N.MenuSpan>
+      </N.MenuTrigger>
 
-      <div className={`menu__inner js-menu-inner ${menuVisible ? 'active' : ''}`} ref={menuInnerRef}>
-        <ul className="menu__inner-background js-menu-inner-background"></ul>
+      <N.MenuInner ref={menuInnerRef}>
+        <N.MenuBackGround></N.MenuBackGround>
         <div className="blur" ref={(el) => (blursRef.current[0] = el)} />
         <div className="blur" ref={(el) => (blursRef.current[1] = el)} />
         <div className="blur" ref={(el) => (blursRef.current[2] = el)} />
 
-        <div className="menu__items-wrapper js-menu-items-wrapper">
-          <ul className="menu__items-list js-menu-items-list">
-            <li className="js-menu-item is-active">
-              <a href="/project">PROJECT</a>
-            </li>
-            <li className="js-menu-item">
-              <a href="/guestbook">GUESTBOOK</a>
-            </li>
-            <li className="js-menu-item">
-              <a href="/chatbot">CHATBOT</a>
-            </li>
-            <li className="js-menu-item">
-              <a href="#">QR-CODE</a>
-            </li>
-            <li className="js-menu-item">
-              <a href="/developer">DEVELOPER</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+        <N.MenuInnerWrapper>
+          <N.MenuItemList className="js-menu-items-list">
+            <N.MenuItemLi className="js-menu-item is-active">
+              <N.M_a href="/project">PROJECT</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="/guestbook">GUESTBOOK</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="/chatbot">CHATBOT</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="#">QR-CODE</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="/developer">DEVELOPER</N.M_a>
+            </N.MenuItemLi>
+          </N.MenuItemList>
+        </N.MenuInnerWrapper>
+      </N.MenuInner>
     </>
   );
 };
