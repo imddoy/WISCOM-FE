@@ -1,14 +1,65 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { TimelineMax, Power1, Power4, Back } from 'gsap';
+import { TimelineMax, Power1, Power4, Back, Sine, gsap } from 'gsap';
 import './nav.css';
+import * as N from './NavListStyle';
 
 const NavList = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const menuInnerRef = useRef(null);
   const menuTriggerRef = useRef(null);
   const timelineRef = useRef(null);
+  const blursRef = useRef([]);
 
   useEffect(() => {
+    const randomX = random(-400, 400);
+    const randomY = random(-200, 200);
+    const randomDelay = random(0, 50);
+    const randomTime = random(6, 12);
+    const randomTime2 = random(5, 6);
+    const randomAngle = random(-30, 150);
+
+    const blurs = blursRef.current;
+    blurs.forEach((blur) => {
+      gsap.set(blur, {
+        x: randomX(-1),
+        y: randomX(1),
+        rotation: randomAngle(-1),
+      });
+
+      moveX(blur, 1);
+      moveY(blur, -1);
+      rotate(blur, 1);
+    });
+
+    function rotate(target, direction) {
+      gsap.to(target, randomTime2(), {
+        rotation: randomAngle(direction),
+        ease: Sine.easeInOut,
+        onComplete: () => rotate(target, direction * -1),
+      });
+    }
+
+    function moveX(target, direction) {
+      gsap.to(target, randomTime(), {
+        x: randomX(direction),
+        ease: Sine.easeInOut,
+        onComplete: () => moveX(target, direction * -1),
+      });
+    }
+
+    function moveY(target, direction) {
+      gsap.to(target, randomTime(), {
+        y: randomY(direction),
+        ease: Sine.easeInOut,
+        onComplete: () => moveY(target, direction * -1),
+      });
+    }
+
+    function random(min, max) {
+      const delta = max - min;
+      return (direction = 1) => (min + delta * Math.random()) * direction;
+    }
+
     const menuTrigger = menuTriggerRef.current;
 
     if (!menuTrigger) {
@@ -107,33 +158,63 @@ const NavList = () => {
     };
   }, [menuVisible]);
 
-  console.log(menuVisible);
+  useEffect(() => {
+    const handleResize = () => {
+      const menuTrigger = menuTriggerRef.current;
+
+      if (!menuTrigger) {
+        return;
+      }
+
+      // 창의 크기가 900px를 초과하고 메뉴가 숨겨져 있는 경우에는 트리거를 보이게 설정
+      if (menuVisible) {
+        menuTrigger.style.display = 'flex';
+      } else if (window.innerWidth < 900 && menuVisible == false) {
+        menuTrigger.style.display = 'flex';
+      } else if (window.innerWidth >= 900 && menuVisible == false) {
+        menuTrigger.style.display = 'none';
+      }
+    }; // 처음 컴포넌트가 마운트될 때 이벤트 리스너 등록
+    window.addEventListener('resize', handleResize);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [menuVisible]);
+
   return (
     <>
-      <div className={`menu__trigger`} ref={menuTriggerRef}>
-        <span>{menuVisible ? 'CLOSE' : 'MENU'}</span>
-      </div>
+      <N.MenuTrigger ref={menuTriggerRef}>
+        <N.MenuSpan>{menuVisible ? 'CLOSE' : 'MENU'}</N.MenuSpan>
+      </N.MenuTrigger>
 
-      <div className={`menu__inner js-menu-inner ${menuVisible ? 'active' : ''}`} ref={menuInnerRef}>
-        <ul className="menu__inner-background js-menu-inner-background"></ul>
+      <N.MenuInner ref={menuInnerRef}>
+        <N.MenuBackGround></N.MenuBackGround>
+        <div className="blur" ref={(el) => (blursRef.current[0] = el)} />
+        <div className="blur" ref={(el) => (blursRef.current[1] = el)} />
+        <div className="blur" ref={(el) => (blursRef.current[2] = el)} />
 
-        <div className="menu__items-wrapper js-menu-items-wrapper">
-          <ul className="menu__items-list js-menu-items-list">
-            <li className="js-menu-item is-active">
-              <a href="/project">PROJECT</a>
-            </li>
-            <li className="js-menu-item">
-              <a href="/guestbook">GUESTBOOK</a>
-            </li>
-            <li className="js-menu-item">
-              <a href="/chatbot">CHATBOT</a>
-            </li>
-            <li className="js-menu-item">
-              <a href="#">QR-CODE</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+        <N.MenuInnerWrapper>
+          <N.MenuItemList className="js-menu-items-list">
+            <N.MenuItemLi className="js-menu-item is-active">
+              <N.M_a href="/project">PROJECT</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="/guestbook">GUESTBOOK</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="/chatbot">CHATBOT</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="#">QR-CODE</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="/developer">DEVELOPER</N.M_a>
+            </N.MenuItemLi>
+          </N.MenuItemList>
+        </N.MenuInnerWrapper>
+      </N.MenuInner>
     </>
   );
 };
