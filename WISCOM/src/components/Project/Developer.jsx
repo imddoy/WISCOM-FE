@@ -1,20 +1,29 @@
 import * as D from './ProjectStyle';
 import DeveloperProfile from './DeveloperProfile.jsx';
 
+import BackBlue from '../../img/Project/BackgroundBlue.svg';
+import BackGreen from '../../img/Project/BackgroundGreen.svg';
+import BackYellow from '../../img/Project/BackgroundYellow.svg';
+
+const backgroundImages = [BackGreen, BackBlue, BackGreen, BackYellow];
+
 const Developer = () => {
   return (
     <D.DeveloperContainer>
       <D.DeTitle>DEVELOPER</D.DeTitle>
       <D.UpBox>
-        <DeveloperProfile />
-        <DeveloperProfile />
+        {backgroundImages.slice(0, 2).map((bg, index) => (
+          <DeveloperProfile key={index} bg={bg} />
+        ))}
       </D.UpBox>
 
       <D.DownBox>
-        <DeveloperProfile />
-        <DeveloperProfile />
+        {backgroundImages.slice(2).map((bg, index) => (
+          <DeveloperProfile key={index} bg={bg} />
+        ))}
       </D.DownBox>
     </D.DeveloperContainer>
   );
 };
+
 export default Developer;
