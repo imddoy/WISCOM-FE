@@ -1,18 +1,20 @@
+import * as W from './ProjectStyle';
+import Circle from '../../img/Project/Circle.svg';
+
 const HashTag = ({ hashtags }) => {};
 
-const WorkInfo = ({ workLogoSrc, WorkTitle, teamName, text }) => {
+const WorkInfo = () => {
   return (
-    <div className="Work-container">
-      <div className="work-logo">
-        <img src={workLogoSrc} alt="작품 로고" />
-      </div>
-      <div className="work-info">
-        <h1>{WorkTitle}</h1>
-        <p>{teamName}</p>
-      </div>
-      <div className="hash-tag-up-line">{text}</div>
-      <div className="hash-tag-down-line">{text}</div>
-    </div>
+    <W.WorkContainer>
+      <W.WorkLogo src={Circle} alt="작품 로고" />
+
+      <W.WorkInfoContent>
+        <W.Text fs="60px">WorkTitle</W.Text>
+        <W.Text fs="48px">teamName</W.Text>
+        {/* <div className="hash-tag-up-line">해시태그</div>
+        <div className="hash-tag-down-line">해시태그</div> */}
+      </W.WorkInfoContent>
+    </W.WorkContainer>
   );
 };
 export default WorkInfo;
