@@ -7,6 +7,7 @@ import BackYellow from '../../img/Project/BackgroundYellow.svg';
 
 const backgroundImages = [BackGreen, BackBlue, BackGreen, BackYellow];
 
+// 재사용 쉽도록 수정
 const Developer = () => {
   return (
     <D.DeveloperContainer>
