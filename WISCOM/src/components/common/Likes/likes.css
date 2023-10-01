@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   text-align: center; /* 가로 가운데 정렬 */
+  margin-top: 280px;
+  margin-bottom: 140px;
 }
 .like-box > img {
   margin: 0 auto;

@@ -7,6 +7,7 @@ const Comment = () => {
   const [newComment, setNewComment] = useState('');
   const [charCount, setCharCount] = useState(0);
   const [name, setName] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -17,13 +18,25 @@ const Comment = () => {
     setCharCount(event.target.value.length);
   };
 
+  const handleTagClick = (tagName) => {
+    setSelectedTags((prevTags) => {
+      if (prevTags.includes(tagName)) {
+        return prevTags.filter((tag) => tag !== tagName);
+      } else {
+        return [...prevTags, tagName];
+      }
+    });
+  };
+
   const handleCommentSubmit = () => {
     const date = new Date().toLocaleString(); // 현재 날짜 및 시간을 문자열로 가져옴
     // Add the new comment to the comments list
-    setComments([{ text: newComment, date, name }, ...comments]);
+    const newCommentItem = { text: newComment, date, name, tags: selectedTags };
+    setComments([newCommentItem, ...comments]);
     setNewComment(''); // Clear the input after submitting
     setCharCount(0); // Reset character count on submission
     setName('');
+    setSelectedTags([]);
   };
 
   const isSubmitDisabled = newComment === '' || charCount > 150 || name === ''; //완료 버튼 비활성화 조건
@@ -31,7 +44,7 @@ const Comment = () => {
   const tagList = ['1번', '2번', '3번', '4번', '5번'];
 
   const TagList = tagList.map((data, index) => {
-    return <HashTag tagName={data} key={index} />; //onTagClick={handleTagClick}
+    return <HashTag tagName={data} key={index} isSelected={selectedTags.includes(data)} onTagClick={handleTagClick} />; //onTagClick={handleTagClick}
   });
 
   return (
@@ -61,12 +74,24 @@ const Comment = () => {
       <div className="comment-list">
         {comments.map((comment, index) => (
           <div key={index} className="comment-item">
-            <div className="comment-info">
-              <span className="comment-author">{comment.name}</span>
-              <span className="comment-date">{comment.date}</span>
+            <div>
+              <div className="comment-info">
+                <span className="comment-author">{comment.name}</span>
+                <span className="comment-date">{comment.date}</span>
+              </div>
+              <p className="comment-content">{comment.text}</p>
             </div>
 
-            <p className="comment-content">{comment.text}</p>
+            {/* Display the selected tags */}
+            {comment.tags && (
+              <div className="tags-wrapper">
+                {comment.tags.map((tag, index) => (
+                  <div key={index} className="selected-tag">
+                    <p>{tag}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
