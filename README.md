@@ -6,10 +6,11 @@
 # 😀 WISCOM 개발팀 팀원 소개
 
 ### PM / Design
-| <center>김채현 [@imddoy](https://github.com/imddoy)</center> |
+| <center>김채현</center> |
 | --- |
 |<center> <img width="150px" src="https://avatars.githubusercontent.com/u/90364711?v=4" /></center>| 
 | <center>디자인</center> | 
+| [@imddoy](https://github.com/imddoy)|
 
 ### Front-end developer
 
