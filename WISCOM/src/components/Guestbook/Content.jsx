@@ -3,9 +3,9 @@ import * as C from './ContentStyle';
 
 export default function Content() {
   const [inputText, setInputText] = useState(''); // 입력된 텍스트를 저장하는 상태
-  const maxLength = 200; // 최대 글자 수
+  const maxLength = 200;
   const [entries, setEntries] = useState([]); // 입력된 내용을 저장하는 배열
-  const [anonymousN, setAnonymousN] = useState(0); // 익명 N 카운터
+  const [anonymousN, setAnonymousN] = useState(0); 
 
   const getCurrentDate = () => {
     const now = new Date();

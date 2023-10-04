@@ -124,7 +124,7 @@ export const EntryItem = styled.div`
   @media screen and (min-width: 901px) and (max-width: 1000px) {
 
     line-height: 1.2;
-  }
+  } 
 
 `;
 export const EntryDate = styled.span`
