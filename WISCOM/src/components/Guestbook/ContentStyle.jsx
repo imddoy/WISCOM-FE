@@ -1,9 +1,5 @@
-import styled, { css, ThemeProvider } from 'styled-components';
-export const theme = {
-  breakpoints: {
-    down: (size) => `@media (max-width: ${size}px)`,
-  },
-};
+import styled from 'styled-components';
+
 export const ContentContainer = styled.div``;
 
 export const Title = styled.div`
@@ -12,7 +8,6 @@ export const Title = styled.div`
   font-family: 'Pretendard', sans-serif; 
   font-size: 50px; 
   font-weight: bold;
-
   white-space: nowrap; 
   @media screen and (min-width: 0px) and (max-width: 374px) {
     font-size: 25px;
@@ -38,7 +33,6 @@ export const InputBox = styled.div`
   max-height: 100%;
   margin-bottom: 20px;
   padding: 40px;
-
 `;
 export const ContentInput = styled.textarea`
   font-family: 'Pretendard', sans-serif; 
@@ -79,19 +73,17 @@ export const Button = styled.button`
   font-weight: bold;
   margin: 0 auto;
   font-family: 'Pretendard', sans-serif; 
-
   @media screen and (max-width: 475px) {
     width: 100%; /* 모바일 화면에서 가로 가득 차도록 설정합니다. */
     margin: 0; /* 좌우 마진을 제거합니다. */
   }
   `;
-  
+
 export const Entries = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
   list-style-type: none;
-
 `;
 
 export const EntryItem = styled.div`
@@ -106,15 +98,12 @@ export const EntryItem = styled.div`
   line-height: 1.3;
   color: black; /* 글씨 색상 설정 */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-
   @media screen and (min-width:0px) and (max-width: 700px) {
     margin: 10px;
     flex-basis: calc(100% - 25px);
     height: 440px; 
     line-height: 1.2;
-
   }
-
   @media screen and (min-width: 701px) and (max-width: 900px) {
     margin: 10px;
     flex-basis: calc(50% - 20px);
@@ -122,27 +111,47 @@ export const EntryItem = styled.div`
     line-height: 1.2;
   }
   @media screen and (min-width: 901px) and (max-width: 1000px) {
-
     line-height: 1.2;
-  } 
-
+  }
 `;
 export const EntryDate = styled.span`
   font-size: 18px;
   white-space: nowrap; 
-
   @media screen and (min-width: 0px) and (max-width: 700px) {
     font-size: 16px;
   }
-
 `;
 
 export const EntryText = styled.span`
   font-size: 20px;
-
   @media screen and (min-width: 0px) and (max-width: 700px) {
     font-size: 17px;
   }
   
+`;
+export const Pagination = styled.span`
+display: flex;
+justify-content: center;
+margin-top: 20px;
 
+ul {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+  padding: 0;
+
+  li {
+    cursor: pointer;
+    padding: 5px 10px;
+    //border: 1px solid #ccc;
+    border-radius: 5px;
+    &:hover {
+      background-color: #eee;
+    }
+    &.active {
+      background-color: #75FF72;
+      color: #000;
+    }
+  }
+}
 `;
