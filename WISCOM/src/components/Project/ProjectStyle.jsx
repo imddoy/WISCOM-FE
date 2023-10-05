@@ -27,7 +27,7 @@ export const WorkLogo = styled.img`
   width: 30rem;
   height: 30rem;
 
-  @media screen and (min-width: 931px) and (max-width: 1024px) {
+  @media screen and (min-width: 931px) and (max-width: 1030px) {
     margin-left: 20rem;
     margin-right: -12rem;
     width: 25rem;
@@ -40,14 +40,14 @@ export const WorkLogo = styled.img`
     width: 25rem;
     height: 25rem;
   }
-  @media screen and (min-width: 805px) and (max-width: 893px) {
+  @media screen and (min-width: 814px) and (max-width: 893px) {
     margin-left: 20rem;
     margin-right: -10rem;
     width: 22.5rem;
     height: 22.5rem;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 805px) {
+  @media screen and (min-width: 768px) and (max-width: 814px) {
     margin-left: 5rem;
     margin-right: 0rem;
     width: 22.5rem;
@@ -78,7 +78,7 @@ export const WorkLogo = styled.img`
 export const WorkInfoContent = styled.div`
   margin-right: 15rem;
 
-  @media screen and (max-width: 805px) {
+  @media screen and (max-width: 814px) {
     margin: 0;
   }
 `;
@@ -107,7 +107,7 @@ export const HashtagContainer = styled.div`
   font-size: 24px;
   white-space: nowrap;
 
-  @media (max-width: 805px) {
+  @media (max-width: 814px) {
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -252,12 +252,12 @@ export const DeveloperContainer = styled.div`
   padding-left: 5rem;
   padding-right: 5rem;
 
-  @media screen and (min-width: 810px) and (max-width: 1024px) {
+  @media screen and (min-width: 814px) and (max-width: 1030px) {
     padding-left: 2rem;
     padding-right: 2rem;
     margin-left: 2rem;
   }
-  @media screen and (min-width: 768px) and (max-width: 810px) {
+  @media screen and (min-width: 768px) and (max-width: 814px) {
     padding-left: 1rem;
     padding-right: 1rem;
     margin-left: 1rem;
@@ -289,7 +289,7 @@ export const DeTitle = styled.div`
   line-height: normal;
   margin-bottom: 90px;
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @media screen and (min-width: 768px) and (max-width: 1030px) {
     font-size: 50px;
     margin-left: -2rem;
   }
@@ -326,10 +326,10 @@ export const UpBox = styled.div`
   @media screen and (min-width: 1111px) and (max-width: 1226px) {
     margin-left: -50px;
   }
-  @media screen and (min-width: 1024px) and (max-width: 1111px) {
+  @media screen and (min-width: 1030px) and (max-width: 1111px) {
     margin-left: -20px;
   }
-  @media screen and (min-width: 893px) and (max-width: 1024px) {
+  @media screen and (min-width: 893px) and (max-width: 1030px) {
     margin-left: -130px;
     margin-bottom: 50px;
   }
@@ -359,10 +359,10 @@ export const DownBox = styled.div`
   @media screen and (min-width: 1111px) and (max-width: 1226px) {
     margin-left: 800px;
   }
-  @media screen and (min-width: 1024px) and (max-width: 1111px) {
+  @media screen and (min-width: 1030px) and (max-width: 1111px) {
     margin-left: 900px;
   }
-  @media screen and (min-width: 540px) and (max-width: 1024px) {
+  @media screen and (min-width: 540px) and (max-width: 1030px) {
     margin-left: 100px;
   }
   @media screen and (min-width: 426px) and (max-width: 540px) {
@@ -394,11 +394,11 @@ export const DeveloperProfileContainer = styled.div`
     margin-left: 3rem;
     margin-right: 18rem;
   }
-  @media screen and (min-width: 1024px) and (max-width: 1111px) {
+  @media screen and (min-width: 1030px) and (max-width: 1111px) {
     margin-left: 3rem;
     margin-right: 16rem;
   }
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @media screen and (min-width: 768px) and (max-width: 1030px) {
     margin-left: 2rem;
     margin-right: 13rem;
   }
@@ -437,7 +437,7 @@ export const Background = styled.div`
 
   background-image: url(${(props) => props.url});
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @media screen and (min-width: 768px) and (max-width: 1030px) {
     width: 230px;
     height: 230px;
   }
@@ -460,7 +460,7 @@ export const DeveloperImg = styled.img`
 
   margin-bottom: 2.5rem;
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @media screen and (min-width: 768px) and (max-width: 1030px) {
     width: 130px;
     height: 130px;
   }
