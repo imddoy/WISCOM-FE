@@ -17,4 +17,8 @@ const ProjectWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 320px) {
+    display: none;
+  }
 `;
