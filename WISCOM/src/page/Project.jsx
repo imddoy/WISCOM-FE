@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import WorkInfo from '../components/Project/WorkInfo';
 import IntroWork from '../components/Project/IntroWork';
 import Developer from '../components/Project/Developer';
