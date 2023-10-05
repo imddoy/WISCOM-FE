@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './hashtag.css';
+import '../common/Comment/hashtag.css';
+import * as H from './HashTagStyle';
 
 const HashTag = (props) => {
   //const [isClicked, setIsClicked] = useState(false);
@@ -13,12 +14,12 @@ const HashTag = (props) => {
   const tagBoxClass = isSelected ? 'tag-box clicked' : 'tag-box';
 
   return (
-    <div className={tagBoxClass} onClick={handleTagClick}>
+    <H.HashTagWrapper className={tagBoxClass} onClick={handleTagClick}>
       {/* onClick={() => props.onTagClick(tagName)} */}
       {/* 배경 박스 */}
 
-      <p>{tagName}</p>
-    </div>
+      <H.HashTagSpan>{tagName}</H.HashTagSpan>
+    </H.HashTagWrapper>
   );
 };
 

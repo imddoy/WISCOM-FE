@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import HashTag from '../Comment/HashTag';
-import './comment.css';
+import HashTag from './HashTag';
+
+import * as C from './CommentStyle';
 
 const Comment = () => {
   const [comments, setComments] = useState([]);
@@ -8,6 +9,7 @@ const Comment = () => {
   const [charCount, setCharCount] = useState(0);
   const [name, setName] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
+  const maxLength = 150; // 최대 글자 수
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -48,54 +50,55 @@ const Comment = () => {
   });
 
   return (
-    <div>
-      <div className="text-box">
-        <div className="tag-list">{TagList}</div>
+    <C.CommentWrapper>
+      <C.CommetTextBox>
+        <C.CommentTagList>{TagList}</C.CommentTagList>
         {/* name 받기 */}
-        <input
+        <C.CommentInput
           type="text"
           placeholder="이름을 입력해주세요" // 이름을 입력할 플레이스홀더 추가
           value={name}
           onChange={handleNameChange} // 이름을 입력하는 이벤트 핸들러 추가
         />
-        <textarea
+        <C.CommentTextArea
           placeholder="해시태그 선택 및 댓글을 작성해주세요"
           value={newComment}
           onChange={handleCommentChange}
-          maxLength={150}
+          maxLength={maxLength}
         />
-        <p className="charCount">{charCount} / 150</p>
-      </div>
+        <C.CommentCharCount className="charCount">{charCount} / 150</C.CommentCharCount>
+      </C.CommetTextBox>
 
-      <button className="submit" onClick={handleCommentSubmit} disabled={isSubmitDisabled}>
+      <C.CommentButton onClick={handleCommentSubmit} disabled={isSubmitDisabled}>
         완료
-      </button>
+      </C.CommentButton>
 
-      <div className="comment-list">
+      <C.CommentList>
         {comments.map((comment, index) => (
-          <div key={index} className="comment-item">
-            <div>
-              <div className="comment-info">
-                <span className="comment-author">{comment.name}</span>
-                <span className="comment-date">{comment.date}</span>
-              </div>
-              <p className="comment-content">{comment.text}</p>
-            </div>
+          <C.CommentItem key={index}>
+            <C.CommentInfoWrapper>
+              <C.CommentInfo>
+                <C.CommentAuthor>{comment.name}</C.CommentAuthor>
+                <C.CommentDate>{comment.date}</C.CommentDate>
+              </C.CommentInfo>
+
+              <C.CommentContent>{comment.text}</C.CommentContent>
+            </C.CommentInfoWrapper>
 
             {/* Display the selected tags */}
             {comment.tags && (
-              <div className="tags-wrapper">
+              <C.CommentTagsWrapper>
                 {comment.tags.map((tag, index) => (
-                  <div key={index} className="selected-tag">
-                    <p>{tag}</p>
-                  </div>
+                  <C.CommentSelectedTag key={index}>
+                    <C.CommentP>{tag}</C.CommentP>
+                  </C.CommentSelectedTag>
                 ))}
-              </div>
+              </C.CommentTagsWrapper>
             )}
-          </div>
+          </C.CommentItem>
         ))}
-      </div>
-    </div>
+      </C.CommentList>
+    </C.CommentWrapper>
   );
 };
 

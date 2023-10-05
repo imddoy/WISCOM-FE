@@ -1,4 +1,7 @@
-.text-box {
+import styled from 'styled-components';
+
+export const CommentWrapper = styled.div``;
+export const CommetTextBox = styled.div`
   margin: 20px auto;
   width: 1260px;
   height: 350px;
@@ -7,9 +10,16 @@
   background-color: #000;
   border-radius: 45px;
   position: relative;
-}
+`;
 
-.text-box input {
+export const CommentTagList = styled.div`
+  margin-left: 30px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const CommentInput = styled.input`
   background-color: #000;
   border: none;
   resize: none;
@@ -17,18 +27,19 @@
   font-size: 30px;
   margin: 30px 30px 10px;
   font-family: 'Pretendard';
-}
-.text-box input:focus {
-  outline: none;
-}
 
-.text-box input::placeholder {
-  color: #fff;
-  font-size: 30px;
-  font-family: 'Pretendard';
-}
+  &:focus {
+    outline: none;
+  }
 
-.text-box textarea {
+  &::placeholder {
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Pretendard';
+  }
+`;
+
+export const CommentTextArea = styled.textarea`
   background-color: #000;
   border: none;
   resize: none;
@@ -38,28 +49,28 @@
   margin: 10px 30px;
   height: 150px;
   font-family: 'Pretendard';
-}
 
-.text-box textarea:focus {
-  outline: none;
-}
-.text-box textarea::placeholder {
-  color: #fff;
-  font-size: 30px;
-  font-weight: bold;
-  font-family: 'Pretendard';
-}
+  &:focus {
+    outline: none;
+  }
 
-.charCount {
+  &::placeholder {
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Pretendard';
+  }
+`;
+
+export const CommentCharCount = styled.p`
   color: #fff;
   position: absolute;
   bottom: 40px;
   right: 40px;
   font-size: 30px;
   font-weight: bold;
-}
+`;
 
-.submit {
+export const CommentButton = styled.button`
   background-color: #75ff72;
   width: 378px;
   height: 75px;
@@ -70,15 +81,14 @@
   font-weight: bold;
   font-family: 'Pretendard';
   margin-bottom: 30px;
-}
+`;
 
-.comment-list {
+export const CommentList = styled.div`
   display: flex;
-
   flex-wrap: wrap;
-  /* justify-content: space-around; */
-}
-.comment-item {
+`;
+
+export const CommentItem = styled.div`
   width: 30%;
   height: 439px;
   border-radius: 20px;
@@ -87,42 +97,41 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+`;
 
-.comment-info {
+export const CommentInfoWrapper = styled.div``;
+
+export const CommentInfo = styled.div`
   margin: 20px;
-}
+`;
 
-.comment-date,
-.comment-author {
+export const CommentAuthor = styled.span`
   font-weight: bold;
   font-size: 25px;
-}
-
-.comment-author {
   margin-right: 20px;
-}
-.comment-content {
+`;
+
+export const CommentDate = styled.span`
+  font-weight: bold;
+  font-size: 25px;
+`;
+
+export const CommentContent = styled.div`
   padding: 20px;
   font-weight: bold;
   font-size: 40px;
-}
+  max-height: 250px;
+  overflow: auto;
+`;
 
-.tag-list {
-  margin-left: 30px;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: row;
-}
-
-.tags-wrapper {
+export const CommentTagsWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 20px;
-}
+`;
 
-.selected-tag {
+export const CommentSelectedTag = styled.div`
   width: 130px;
   height: 65px;
   border-radius: 50px;
@@ -133,9 +142,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+`;
 
-.selected-tag p {
+export const CommentP = styled.p`
   font-size: 30px;
   font-weight: bold;
-}
+`;
