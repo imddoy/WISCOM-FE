@@ -1,5 +1,6 @@
 import * as D from './DevsStyle';
 import DeveloperProfile from '../Project/DeveloperProfile.jsx';
+import { DeveloperContainer } from '../Project/ProjectStyle';
 
 import BackBlue from '../../img/Project/BackgroundBlue.svg';
 import BackGreen from '../../img/Project/BackgroundGreen.svg';
@@ -16,22 +17,21 @@ backgroundImages2 에서 svg 하나 랜덤하게 추출해서 4번째에 넣어�
 DeveloperProfile은 만들어져있는 거 가져다 썼슴다.. 감사함다...
 */
 
-const backgroundImages1 = [BackGreen, BackBlue, BackYellow];
+const backgroundImages1 = [BackGreen, BackBlue, BackYellow, BackGreen, BackBlue, BackBlue];
 const backgroundImages2 = [BackGreen, BackBlue, BackYellow];
 
 const Developer = () => {
-    return (
-      <D.DevWrapper>
-        <D.Box>
+  return (
+    <D.DevWrapper>
+      <D.Box>
         {backgroundImages1.map((bg, index) => (
-          <DeveloperProfile key={index} bg={bg} />
+          <DeveloperContainer style={{ margin: 0 }}>
+            <DeveloperProfile key={index} bg={bg} />
+          </DeveloperContainer>
         ))}
-        <div>
-            backgroundImages2.slice(random())
-        </div>
-        </D.Box>
-      </D.DevWrapper>
-    );
-  };
-  
-  export default Developer;
+      </D.Box>
+    </D.DevWrapper>
+  );
+};
+
+export default Developer;
