@@ -1,3 +1,5 @@
+import Dev from './../components/Developer/Devs';
+
 export default function Developer() {
-  return <>개발자페이지</>;
+  return <><Dev></Dev></>;
 }
