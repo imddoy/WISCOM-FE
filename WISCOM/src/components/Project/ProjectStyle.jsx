@@ -125,8 +125,11 @@ export const HashtagUpLine = styled.div`
   margin-left: 40px;
   margin-bottom: 10px;
 
-  @media (max-width: 380px) {
+  @media (max-width: 410px) {
     margin-left: 20px;
+  }
+  @media (max-width: 400px) {
+    margin-left: 10px;
   }
 `;
 
@@ -136,8 +139,11 @@ export const HashtagDownLine = styled.div`
   margin-left: 50px;
   margin-right: 20px;
 
-  @media (max-width: 380px) {
+  @media (max-width: 410px) {
     margin-left: 20px;
+  }
+  @media (max-width: 400px) {
+    margin-left: 10px;
   }
 `;
 
@@ -331,11 +337,11 @@ export const UpBox = styled.div`
     margin-bottom: -20px;
     margin-right: 100px;
   }
-  @media screen and (min-width: 380px) and (max-width: 540px) {
+  @media screen and (min-width: 410px) and (max-width: 540px) {
     margin-bottom: 10px;
     margin-right: 100px;
   }
-  @media screen and (min-width: 320px) and (max-width: 380px) {
+  @media screen and (min-width: 320px) and (max-width: 410px) {
     margin-bottom: 30px;
     margin-right: 50px;
   }
@@ -362,10 +368,10 @@ export const DownBox = styled.div`
   @media screen and (min-width: 426px) and (max-width: 540px) {
     margin-left: 150px;
   }
-  @media screen and (min-width: 380px) and (max-width: 426px) {
+  @media screen and (min-width: 410px) and (max-width: 426px) {
     margin-left: 300px;
   }
-  @media screen and (min-width: 320px) and (max-width: 380px) {
+  @media screen and (min-width: 320px) and (max-width: 410px) {
     margin-left: 250px;
   }
 `;
@@ -408,7 +414,7 @@ export const DeveloperProfileContainer = styled.div`
     width: 10rem;
     height: 10rem;
   }
-  @media screen and (min-width: 380px) and (max-width: 426px) {
+  @media screen and (min-width: 410px) and (max-width: 426px) {
     margin-left: 2rem;
     margin-right: 3rem;
     font-size: 15px;
@@ -416,7 +422,7 @@ export const DeveloperProfileContainer = styled.div`
     height: 10rem;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 380px) {
+  @media screen and (min-width: 320px) and (max-width: 410px) {
     margin-left: -2rem;
     margin-right: 5rem;
     font-size: 15px;
