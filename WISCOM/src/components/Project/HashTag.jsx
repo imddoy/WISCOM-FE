@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../common/Comment/hashtag.css';
 import * as H from './HashTagStyle';
 
 const HashTag = (props) => {
@@ -11,15 +10,16 @@ const HashTag = (props) => {
     onTagClick(tagName); // Notify the parent component about the tag click and its content
   };
 
-  const tagBoxClass = isSelected ? 'tag-box clicked' : 'tag-box';
+  // 선택 여부에 따라 스타일 변수명 변경
+  const WrapperComponent = isSelected ? H.ClickedHashTagWrapper : H.HashTagWrapper;
 
   return (
-    <H.HashTagWrapper className={tagBoxClass} onClick={handleTagClick}>
+    <WrapperComponent onClick={handleTagClick}>
       {/* onClick={() => props.onTagClick(tagName)} */}
       {/* 배경 박스 */}
 
       <H.HashTagSpan>{tagName}</H.HashTagSpan>
-    </H.HashTagWrapper>
+    </WrapperComponent>
   );
 };
 
