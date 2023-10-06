@@ -7,7 +7,7 @@ const Comment = () => {
   const [newComment, setNewComment] = useState(''); //댓글
   const [name, setName] = useState(''); //이름
   const [selectedTags, setSelectedTags] = useState([]); //해시태그 선택
-  const maxLength = 10; // 최대 글자 수
+  const maxLength = 150; // 최대 글자 수
 
   const commentsPerPage = 6; // 한 페이지에 보일 댓글 수
   const [currentPage, setCurrentPage] = useState(1); //페이지
