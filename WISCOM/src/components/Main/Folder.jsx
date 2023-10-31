@@ -17,7 +17,7 @@ export default function Folder() {
           <F.FolderName>PROJECT</F.FolderName>
         </F.FolderGroup>
 
-        <F.FolderGroup href="/chatbot">
+        <F.FolderGroup href="https://dswuwis.store/chatbot" target="_blank">
           <motion.div
             whileHover={{
               scale: 1.2,
