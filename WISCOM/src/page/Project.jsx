@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import WorkInfo from '../components/Project/WorkInfo';
 import IntroWork from '../components/Project/IntroWork';
+import ImageSlider from '../components/Project/ImageSlider';
 import Developer from '../components/Project/Developer';
 import Likes from '../components/Project/Likes';
 import Comment from '../components/Project/Comment';
@@ -10,6 +11,7 @@ export default function Project() {
     <ProjectWrapper>
       <WorkInfo />
       <IntroWork />
+      <ImageSlider />
       <Developer />
       <Likes />
       <Comment />
