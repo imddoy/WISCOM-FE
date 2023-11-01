@@ -198,7 +198,7 @@ const NavList = () => {
         <N.MenuInnerWrapper>
           <N.MenuItemList className="js-menu-items-list">
             <N.MenuItemLi className="js-menu-item is-active">
-              <N.M_a href="/project">PROJECT</N.M_a>
+              <N.M_a href="/map">PROJECT</N.M_a>
             </N.MenuItemLi>
             <N.MenuItemLi className="js-menu-item">
               <N.M_a href="/guestbook">GUESTBOOK</N.M_a>
@@ -206,9 +206,7 @@ const NavList = () => {
             <N.MenuItemLi className="js-menu-item">
               <N.M_a href="/chatbot">CHATBOT</N.M_a>
             </N.MenuItemLi>
-            <N.MenuItemLi className="js-menu-item">
-              <N.M_a href="#">QR-CODE</N.M_a>
-            </N.MenuItemLi>
+
             <N.MenuItemLi className="js-menu-item">
               <N.M_a href="/developer">DEVELOPER</N.M_a>
             </N.MenuItemLi>

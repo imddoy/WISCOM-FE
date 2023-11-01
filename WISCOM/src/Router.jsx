@@ -4,6 +4,7 @@ import Main from './page/Main';
 import Guestbook from './page/Guestbook';
 import Project from './page/Project';
 import Developer from './page/Developer';
+import Map from './page/Map';
 import Nav from './components/common/Nav/Nav';
 
 function AppNavigation() {
@@ -27,6 +28,7 @@ function AppNavigation() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/guestbook" element={<Guestbook />} />
+          <Route path="/map" element={<Map />} />
           <Route path="/project" element={<Project />} />
           <Route path="/developer" element={<Developer />} />
         </Routes>
@@ -51,5 +53,8 @@ const GlobalWrapper = styled.main`
   }
   @media screen and (max-width: 833px) {
     padding: 5rem;
+  }
+  @media screen and (max-width: 400px) {
+    padding: 3rem;
   }
 `;

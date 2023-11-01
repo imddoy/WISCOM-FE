@@ -96,3 +96,47 @@ export const Text = styled.div`
     font-size: 26px;
   }
 `;
+
+export const TeamWrapper = styled.div`
+  align-self: center;
+  margin-top: 6rem;
+`;
+export const TeamContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media screen and (max-width: 800px) {
+    width: 500px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 400px;
+  }
+  @media screen and (max-width: 400px) {
+    width: 300px;
+  }
+  @media screen and (max-width: 300px) {
+    width: 200px;
+  }
+`;
+export const TeamName = styled.div`
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  line-height: normal;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-bottom: 2rem;
+`;
+
+export const Click = styled.div`
+  text-align: center;
+  font-size: 35px;
+  line-height: normal;
+  color: white;
+  margin-top: 3rem;
+`;
