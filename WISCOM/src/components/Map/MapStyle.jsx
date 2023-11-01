@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const MapContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Floorplan = styled.div`
   position: relative;
   width: 300px;
@@ -23,6 +28,7 @@ export const Title = styled.div`
   font-weight: 600;
   margin-bottom: 30px;
 `;
+
 export const Room = styled.div`
   position: absolute;
   width: 50px;

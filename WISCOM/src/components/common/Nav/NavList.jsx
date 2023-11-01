@@ -198,6 +198,9 @@ const NavList = () => {
         <N.MenuInnerWrapper>
           <N.MenuItemList className="js-menu-items-list">
             <N.MenuItemLi className="js-menu-item is-active">
+              <N.M_a href="/">MAIN</N.M_a>
+            </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item is-active">
               <N.M_a href="/map">PROJECT</N.M_a>
             </N.MenuItemLi>
             <N.MenuItemLi className="js-menu-item">

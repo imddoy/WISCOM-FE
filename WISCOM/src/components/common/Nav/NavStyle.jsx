@@ -131,6 +131,10 @@ export const TeamName = styled.div`
   padding-left: 2rem;
   padding-right: 2rem;
   margin-bottom: 2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Click = styled.div`
@@ -138,5 +142,22 @@ export const Click = styled.div`
   font-size: 35px;
   line-height: normal;
   color: white;
-  margin-top: 3rem;
+  margin-top: 5rem;
+  font-weight: 200;
+
+  opacity: 0.99;
+  animation: loading 0.7s linear infinite alternate;
+  animation-name: loading-color;
+  animation-delay: calc(0.1s);
+
+  @keyframes loading-color {
+    0%,
+    20% {
+      color: ${(props) => props.theme.colors.white};
+    }
+    80%,
+    100% {
+      color: inherit;
+    }
+  }
 `;

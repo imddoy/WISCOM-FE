@@ -6,7 +6,7 @@ export default function Folder() {
   return (
     <>
       <F.FolderWrapper>
-        <F.FolderGroup href="/project">
+        <F.FolderGroup href="/map">
           <motion.div
             whileHover={{
               scale: 1.2,
