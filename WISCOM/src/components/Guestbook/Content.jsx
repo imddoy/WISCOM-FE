@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import * as C from './ContentStyle';
 
 export default function Content() {
+  const [name, setName] = useState(''); //이름
   const [inputText, setInputText] = useState(''); // 입력된 텍스트를 저장하는 상태
   const maxLength = 200; // 최대 글자 수
   const [entries, setEntries] = useState([]); // 입력된 내용을 저장하는 배열
-  const [anonymousN, setAnonymousN] = useState(0); // 익명 N 카운터
   const entriesPerPage = 6; // 한 페이지에 보일 엔트리 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 
@@ -15,6 +15,9 @@ export default function Content() {
     const month = now.getMonth() + 1;
     const day = now.getDate();
     return `${year}-${month}-${day}`;
+  };
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
   // 입력된 텍스트가 변경될 때 호출되는 함수
@@ -26,18 +29,21 @@ export default function Content() {
       setInputText(text);
     }
   };
+
+  const isSubmitDisabled = inputText === '' || inputText.length > maxLength || name === ''; //완료 버튼 비활성화 조건
+
   // 완료 버튼 클릭 시 입력된 내용을 목록에 추가하는 함수
   const handleAddEntry = () => {
     if (inputText.trim() !== '') {
       const newEntry = {
         text: inputText,
         date: getCurrentDate(),
-        anonymous: `익명 ${anonymousN + 1}`,
+        name: name,
       };
 
       setEntries([newEntry, ...entries]);
       setInputText(''); // 입력 필드 초기화
-      setAnonymousN(anonymousN + 1); // 익명 N 증가
+      setName('');
     }
   };
   // 현재 페이지의 엔트리 배열
@@ -59,6 +65,12 @@ export default function Content() {
       <br />
       <br />
       <C.InputBox>
+        <C.CommentInput
+          type="text"
+          placeholder="이름을 입력해주세요" // 이름을 입력할 플레이스홀더 추가
+          value={name}
+          onChange={handleNameChange} // 이름을 입력하는 이벤트 핸들러 추가
+        />
         <C.ContentInput
           placeholder="방명록을 작성해주세요"
           value={inputText}
@@ -71,12 +83,15 @@ export default function Content() {
       </C.InputBox>
       <br />
 
-      <C.Button onClick={handleAddEntry}>완료</C.Button>
+      <C.Button onClick={handleAddEntry} disabled={isSubmitDisabled}>
+        완료
+      </C.Button>
+
       <C.Entries>
         {currentEntries.map((entry, index) => (
           <C.EntryItem key={index}>
             <C.EntryDate>
-              {entry.anonymous} {entry.date}
+              {entry.name} {entry.date}
             </C.EntryDate>
             <br />
             <C.EntryText>{entry.text}</C.EntryText>
