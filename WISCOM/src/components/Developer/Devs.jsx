@@ -5,6 +5,8 @@ import { DeveloperContainer } from '../Project/ProjectStyle';
 import BackBlue from '../../img/Developer/BackgroundBlue.svg';
 import BackGreen from '../../img/Developer/BackgroundGreen.svg';
 import BackYellow from '../../img/Developer/BackgroundYellow.svg';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const backgroundImages2 = [BackGreen, BackBlue, BackYellow];
 
@@ -25,6 +27,15 @@ function getRandomBackgroundImage() {
 }
 
 const Developer = () => {
+  const [data, setData] = useState(null)
+
+  useEffect(()=>{
+    axios.get('/developers')
+      .then(response => {
+        setData(response.data);
+      });
+  },data);
+
   const images = [];
   for (let i = 0; i < 4; i++) {
     if (i === 3) {
@@ -33,6 +44,9 @@ const Developer = () => {
       images.push(shuffledImages[i]);
     }
   }
+
+  console.log("확인");
+  console.log(data);
 
   return (
     <D.DevWrapper>
