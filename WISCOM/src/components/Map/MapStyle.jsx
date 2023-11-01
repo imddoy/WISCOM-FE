@@ -4,7 +4,7 @@ export const Floorplan = styled.div`
   position: relative;
   width: 300px;
   height: 450px;
-  border: 2px solid black;
+  border: 2.5px solid black;
   margin: 0 auto;
 
   @media screen and (max-width: 400px) {
@@ -29,6 +29,7 @@ export const Room = styled.div`
   height: 80px;
   border: 2px solid black;
   background-color: #fff;
+  border-radius: 10px;
 
   font-size: 20px;
   padding: 5px 0 0 5px;
@@ -45,7 +46,7 @@ export const RoomR = styled.div`
   height: 50px;
   border: 2px solid black;
   background-color: #fff;
-
+  border-radius: 10px;
   font-size: 20px;
   padding: 5px 0 0 5px;
 

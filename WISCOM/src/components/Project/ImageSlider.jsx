@@ -1,65 +1,77 @@
 import { useState, useEffect } from 'react';
 import * as I from './ImageSliderStyle';
-import Rectangle from '../../img/Project/Rectangle.svg';
-import left from '../../img/Project/Circle.svg';
-import right from '../../img/Project/Circle.svg';
+import LeftArrow from '../../img/Project/LeftArrow.svg'; // 화살표 이미지 경로
+import RightArrow from '../../img/Project/RightArrow.svg'; // 화살표 이미지 경로
+
+import { useParams } from 'react-router-dom';
 
 const ImageSlider = () => {
-  const slideImages = [
-    {
-      id: 0,
-      img: Rectangle,
-    },
-    {
-      id: 2,
-      img: left,
-    },
-    {
-      id: 3,
-      img: Rectangle,
-    },
-    {
-      id: 4,
-      img: right,
-    },
-  ];
-
+  const [data, setData] = useState(null);
+  const { post_id } = useParams();
+  const [slideImages, setSlideImages] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [showArrows, setShowArrows] = useState(false);
+
+  useEffect(() => {
+    // 정적 URL을 사용하여 데이터를 가져옵니다.
+    fetch(`https://dswuwis.store/posts/${post_id}/`, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        setSlideImages(data.images);
+        console.log('데이터 가져오기 성공');
+      })
+      .catch((error) => console.error('데이터 가져오기 오류:', error));
+  }, [post_id]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
     }, 3000);
 
-    return () => clearInterval(interval); // 클리어 필요
-  }, [currentIdx]);
+    return () => clearInterval(interval);
+  }, [currentIdx, slideImages.length]);
 
-  // 이미지 앞, 뒤로 넘어가는 함수
   const preSlide = () => {
     setCurrentIdx((preIdx) => (preIdx - 1 + slideImages.length) % slideImages.length);
+    console.log('이전 이미지 가져오기');
   };
+
   const nextSlide = () => {
     setCurrentIdx((preIdx) => (preIdx + 1) % slideImages.length);
+    console.log('다음 이미지 가져오기');
+  };
+
+  const toggleArrows = () => {
+    setShowArrows(!showArrows);
   };
 
   return (
-    <I.BannerWrap>
-      <I.SlideBanner>
-        {slideImages.map((image, index) => (
-          <I.BannerImage
-            key={index}
-            className={`${index === currentIdx ? 'active' : ''}`}
-            src={image.img}
-            alt={`slide ${index}`}
-          />
-        ))}
-        <I.PreArrow>
-          <img onClick={preSlide} src={left} alt="Previous" />
-        </I.PreArrow>
-        <I.NextArrow>
-          <img onClick={nextSlide} src={right} alt="Next" />
-        </I.NextArrow>
-      </I.SlideBanner>
+    <I.BannerWrap onMouseEnter={toggleArrows} onMouseLeave={toggleArrows}>
+      {data && (
+        <I.SlideBanner>
+          {slideImages.map((image, index) => (
+            <I.BannerImage
+              key={index}
+              className={`${index === currentIdx ? 'active' : ''}`}
+              src={`https://dswuwis.store/${image}`}
+              alt={`slide ${index}`}
+            />
+          ))}
+          {showArrows && (
+            <>
+              <I.PreArrow>
+                <img onClick={preSlide} src={LeftArrow} alt="Previous" />
+              </I.PreArrow>
+              <I.NextArrow>
+                <img onClick={nextSlide} src={RightArrow} alt="Next" />
+              </I.NextArrow>
+            </>
+          )}
+        </I.SlideBanner>
+      )}
     </I.BannerWrap>
   );
 };
