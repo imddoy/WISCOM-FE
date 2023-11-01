@@ -27,7 +27,7 @@ function AppNavigation() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/guestbook" element={<Guestbook />} />
-          <Route path="/project" element={<Project />} />
+          <Route path="/project/:post_id" element={<Project />} />
           <Route path="/developer" element={<Developer />} />
         </Routes>
       </GlobalWrapper>
