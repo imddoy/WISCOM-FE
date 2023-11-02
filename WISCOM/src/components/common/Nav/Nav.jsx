@@ -7,17 +7,50 @@ const Nav = () => {
   const [Title, setTitle] = useState('');
   const location = useLocation(null);
 
+  const pathToTitleMapping = {
+    '/': 'MAIN',
+    '/map': 'PROJECT',
+    '/guestbook': 'GUESTBOOK',
+    '/chatbot': 'CHATBOT',
+    '/developer': 'DEVELOPER',
+  };
+
+  const TeamList = [
+    'HATCH',
+    'DRAKE',
+    'HIGHFIVE',
+    '딱꼼',
+    'IDEAL',
+    '내마음을UNLOCK',
+    '클래스메이트',
+    '한울',
+    '한소리',
+    '사현희있어요',
+    'AFORE',
+  ];
+
   useEffect(() => {
-    setTitle(location.pathname.slice(1).toUpperCase());
-  });
+    if (location.pathname.includes('/project/')) {
+      setTitle('PROJECT');
+    } else {
+      setTitle(pathToTitleMapping[location.pathname] || '');
+    }
+  }, [location.pathname]);
+
+  const onClickPrj = (index) => {
+    window.location.href = `project/${index}`;
+  };
 
   return (
     <N.NavWrapper>
       <N.NavContent>
-        <N.NavTag href="/project">PROJECT</N.NavTag>
+        <N.NavTag href="/">MAIN</N.NavTag>
+        <N.NavTag href="/map">PROJECT</N.NavTag>
         <N.NavTag href="/guestbook">GUESTBOOK</N.NavTag>
-        <N.NavTag href="/project">CHATBOT</N.NavTag>
-        <N.NavTag href="/project">QR-CODE</N.NavTag>
+        <N.NavTag href="/chatbot">CHATBOT</N.NavTag>
+        {/* <N.NavTag href="https://dswuwis.store/chatbot" target="_blank">
+          CHATBOT
+  </N.NavTag>*/}
         <N.NavTag href="/developer">DEVELOPER</N.NavTag>
         <NavList />
       </N.NavContent>
@@ -25,6 +58,19 @@ const Nav = () => {
       <N.LogoImg>
         <N.Text>{Title}</N.Text>
       </N.LogoImg>
+
+      {location.pathname === '/map' && (
+        <N.TeamWrapper>
+          <N.TeamContent>
+            {TeamList.map((team, index) => (
+              <N.TeamName key={index} onClick={() => onClickPrj(index)}>
+                {team}
+              </N.TeamName>
+            ))}
+          </N.TeamContent>
+          <N.Click>Click The Project</N.Click>
+        </N.TeamWrapper>
+      )}
     </N.NavWrapper>
   );
 };

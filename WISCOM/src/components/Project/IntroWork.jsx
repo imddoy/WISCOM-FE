@@ -1,13 +1,22 @@
 import * as I from './ProjectStyle';
 
-const IntroWork = () => {
+const IntroWork = ({ data }) => {
+  const handleClickServiceURL = () => {
+    if (data && data.service_url) {
+      window.location.href = data.service_url;
+    }
+  };
+
   return (
     <I.IntroContainer>
-      <I.PrjDetail>workDescription</I.PrjDetail>
-
-      {/* 티스토리 코드 참고 & 수정 */}
-      <>여기다가 이미지들 넣어주세요옹~~!</>
+      {data && (
+        <>
+          <I.PrjDetail>{data.content}</I.PrjDetail>
+          <I.PrjURL onClick={handleClickServiceURL}>{data.service_url}</I.PrjURL>
+        </>
+      )}
     </I.IntroContainer>
   );
 };
+
 export default IntroWork;
