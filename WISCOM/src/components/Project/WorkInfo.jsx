@@ -10,7 +10,6 @@ const WorkInfo = ({ data }) => {
             <W.Text fs="60px">{data.title}</W.Text>
             <W.Text fs="50px">{data.team}</W.Text>
             <W.HashtagContainer>
-              {/* 팀이 설정한 해시태그 */}
               <W.HashtagUpLine>
                 <W.HashtagGreen>#</W.HashtagGreen>
                 <W.HashtagYellow>{data.tags.posts[0]}</W.HashtagYellow>
