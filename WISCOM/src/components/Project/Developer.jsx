@@ -8,41 +8,37 @@ import BackYellow from '../../img/Project/BackgroundYellow.svg';
 const backgroundImages = [BackGreen, BackBlue, BackGreen, BackYellow];
 
 const Developer = ({ data }) => {
+  const developerLength = data && data.developer.length;
+  const upBoxData = data && data.developer.slice(2, developerLength);
+  const downBoxData = data && data.developer.slice(0, Math.min(2, developerLength));
+
   return (
     <D.DeveloperContainer>
       {data && (
         <>
           <D.DeTitle>DEVELOPER</D.DeTitle>
           <D.UpBox>
-            {data &&
-              backgroundImages.slice(0, 2).map(
-                (bg, index) =>
-                  data.developer[index] && ( // 데이터가 존재하는지 확인
-                    <DeveloperProfile
-                      key={index}
-                      bg={bg}
-                      image={data.developer[index].image}
-                      name={data.developer[index].name}
-                      impression={data.developer[index].impression}
-                    />
-                  ),
-              )}
+            {upBoxData.map((developer, index) => (
+              <DeveloperProfile
+                key={index}
+                bg={backgroundImages[index]}
+                image={developer.image}
+                name={developer.name}
+                impression={developer.impression}
+              />
+            ))}
           </D.UpBox>
 
           <D.DownBox>
-            {data &&
-              backgroundImages.slice(2).map(
-                (bg, index) =>
-                  data.developer[index + 2] && ( // 데이터가 존재하는지 확인
-                    <DeveloperProfile
-                      key={index}
-                      bg={bg}
-                      image={data.developer[index + 2].image}
-                      name={data.developer[index + 2].name}
-                      impression={data.developer[index + 2].impression}
-                    />
-                  ),
-              )}
+            {downBoxData.map((developer, index) => (
+              <DeveloperProfile
+                key={index}
+                bg={backgroundImages[Math.min(index + 2, backgroundImages.length - 1)]}
+                image={developer.image}
+                name={developer.name}
+                impression={developer.impression}
+              />
+            ))}
           </D.DownBox>
         </>
       )}
