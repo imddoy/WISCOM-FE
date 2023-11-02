@@ -206,9 +206,6 @@ const NavList = () => {
             <N.MenuItemLi className="js-menu-item">
               <N.M_a href="/guestbook">GUESTBOOK</N.M_a>
             </N.MenuItemLi>
-            <N.MenuItemLi className="js-menu-item">
-              <N.M_a href="/chatbot">CHATBOT</N.M_a>
-            </N.MenuItemLi>
 
             <N.MenuItemLi className="js-menu-item">
               <N.M_a href="/developer">DEVELOPER</N.M_a>
