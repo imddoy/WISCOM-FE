@@ -1,20 +1,45 @@
 import { useState, useEffect } from 'react';
-import * as I from './ImageSliderStyle';
-import LeftArrow from '../../img/Project/LeftArrow.svg'; // 화살표 이미지 경로
-import RightArrow from '../../img/Project/RightArrow.svg'; // 화살표 이미지 경로
-
 import { useParams } from 'react-router-dom';
+import * as I from './ImageSliderStyle';
+import LeftArrow from '../../img/Project/RightArrow.svg';
+import RightArrow from '../../img/Project/RightArrow.svg';
+import LeftArrowHover from '../../img/Project/RightArrowHover.svg';
+import RightArrowHover from '../../img/Project/RightArrowHover.svg';
 
 const ImageSlider = () => {
   const [data, setData] = useState(null);
   const { post_id } = useParams();
   const [slideImages, setSlideImages] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [showArrows, setShowArrows] = useState(false);
+  const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
+  const [isRightArrowHovered, setIsRightArrowHovered] = useState(false);
+
+  const handleLeftArrowMouseEnter = () => {
+    setIsLeftArrowHovered(true);
+  };
+
+  const handleLeftArrowMouseLeave = () => {
+    setIsLeftArrowHovered(false);
+  };
+
+  const handleRightArrowMouseEnter = () => {
+    setIsRightArrowHovered(true);
+  };
+
+  const handleRightArrowMouseLeave = () => {
+    setIsRightArrowHovered(false);
+  };
+
+  const preSlide = () => {
+    setCurrentIdx((preIdx) => (preIdx - 1 + slideImages.length) % slideImages.length);
+  };
+
+  const nextSlide = () => {
+    setCurrentIdx((preIdx) => (preIdx + 1) % slideImages.length);
+  };
 
   useEffect(() => {
     const nextPostId = Number(post_id) + 1;
-    // 정적 URL을 사용하여 데이터를 가져옵니다.
     fetch(`http://13.124.248.135/posts/${nextPostId}/`, {
       method: 'GET',
     })
@@ -22,7 +47,6 @@ const ImageSlider = () => {
       .then((data) => {
         setData(data);
         setSlideImages(data.images);
-        console.log('데이터 가져오기 성공');
       })
       .catch((error) => console.error('데이터 가져오기 오류:', error));
   }, [post_id]);
@@ -30,50 +54,42 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 15000);
 
     return () => clearInterval(interval);
   }, [currentIdx, slideImages.length]);
 
-  const preSlide = () => {
-    setCurrentIdx((preIdx) => (preIdx - 1 + slideImages.length) % slideImages.length);
-    console.log('이전 이미지 가져오기');
-  };
-
-  const nextSlide = () => {
-    setCurrentIdx((preIdx) => (preIdx + 1) % slideImages.length);
-    console.log('다음 이미지 가져오기');
-  };
-
-  const toggleArrows = () => {
-    setShowArrows(!showArrows);
-  };
-
   return (
-    <I.BannerWrap onMouseEnter={toggleArrows} onMouseLeave={toggleArrows}>
+    <I.ImageSliderContainer>
       {data && (
-        <I.SlideBanner>
-          {slideImages.map((image, index) => (
-            <I.BannerImage
-              key={index}
-              className={`${index === currentIdx ? 'active' : ''}`}
-              src={`http://13.124.248.135/${image}`}
-              alt={`slide ${index}`}
-            />
-          ))}
-          {showArrows && (
-            <>
-              <I.PreArrow>
-                <img onClick={preSlide} src={LeftArrow} alt="Previous" />
-              </I.PreArrow>
-              <I.NextArrow>
-                <img onClick={nextSlide} src={RightArrow} alt="Next" />
-              </I.NextArrow>
-            </>
-          )}
-        </I.SlideBanner>
+        <>
+          <I.PreArrow
+            onClick={preSlide}
+            onMouseEnter={handleLeftArrowMouseEnter}
+            onMouseLeave={handleLeftArrowMouseLeave}>
+            <img src={isLeftArrowHovered ? LeftArrowHover : LeftArrow} alt="Previous" />
+          </I.PreArrow>
+          <I.SliderBannerWrap>
+            <I.SlideBanner>
+              {slideImages.map((image, index) => (
+                <I.BannerImage
+                  key={index}
+                  className={`${index === currentIdx ? 'active' : ''}`}
+                  src={`http://13.124.248.135/${image}`}
+                  alt={`slide ${index}`}
+                />
+              ))}
+            </I.SlideBanner>
+          </I.SliderBannerWrap>
+          <I.NextArrow
+            onClick={nextSlide}
+            onMouseEnter={handleRightArrowMouseEnter}
+            onMouseLeave={handleRightArrowMouseLeave}>
+            <img src={isRightArrowHovered ? RightArrowHover : RightArrow} alt="Next" />
+          </I.NextArrow>
+        </>
       )}
-    </I.BannerWrap>
+    </I.ImageSliderContainer>
   );
 };
 
