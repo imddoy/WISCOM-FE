@@ -16,9 +16,10 @@ const Nav = () => {
       <N.NavContent>
         <N.NavTag href="/project">PROJECT</N.NavTag>
         <N.NavTag href="/guestbook">GUESTBOOK</N.NavTag>
-        <N.NavTag href="https://dswuwis.store/chatbot" target="_blank">
+        <N.NavTag href="/chatbot">CHATBOT</N.NavTag>
+        {/* <N.NavTag href="https://dswuwis.store/chatbot" target="_blank">
           CHATBOT
-        </N.NavTag>
+        </N.NavTag> */}
         <N.NavTag href="/project">QR-CODE</N.NavTag>
         <N.NavTag href="/developer">DEVELOPER</N.NavTag>
         <NavList />
