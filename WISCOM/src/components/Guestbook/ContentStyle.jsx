@@ -97,6 +97,9 @@ export const Button = styled.button`
     width: 100%; /* 모바일 화면에서 가로 가득 차도록 설정합니다. */
     margin: 0; /* 좌우 마진을 제거합니다. */
   }
+  &:hover {
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  }
 `;
 
 export const Entries = styled.div`

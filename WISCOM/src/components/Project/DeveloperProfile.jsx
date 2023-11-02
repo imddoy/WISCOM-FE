@@ -5,7 +5,7 @@ const DeveloperProfile = (props) => {
     <DP.DeveloperProfileContainer>
       {props && (
         <>
-          <DP.DeveloperImg src={`https://dswuwis.store/${props.image}`} bg={props.bg} alt="개발자 이미지" />
+          <DP.DeveloperImg src={`http://13.124.248.135/${props.image}`} bg={props.bg} alt="개발자 이미지" />
           <DP.Name>{props.name}</DP.Name>
           <DP.Impression>{props.impression}</DP.Impression>
         </>
