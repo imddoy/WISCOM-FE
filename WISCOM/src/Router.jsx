@@ -37,6 +37,7 @@ function AppNavigation() {
           <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
       </GlobalWrapper>
+      <Footer />
     </>
   );
 }
