@@ -11,6 +11,27 @@ const Nav = () => {
     '/': 'MAIN',
     '/map': 'PROJECT',
     '/guestbook': 'GUESTBOOK',
+    '/developer': 'DEVELOPER',
+  };
+
+  const TeamList = [
+    'HATCH',
+    'DRAKE',
+    'HIGHFIVE',
+    '딱꼼',
+    'IDEAL',
+    '내마음을UNLOCK',
+    '클래스메이트',
+    '한울',
+    '한소리',
+    '사현희있어요',
+    'AFORE',
+  ];
+
+  const pathToTitleMapping = {
+    '/': 'MAIN',
+    '/map': 'PROJECT',
+    '/guestbook': 'GUESTBOOK',
     '/chatbot': 'CHATBOT',
     '/developer': 'DEVELOPER',
   };
@@ -47,9 +68,6 @@ const Nav = () => {
         <N.NavTag href="/">MAIN</N.NavTag>
         <N.NavTag href="/map">PROJECT</N.NavTag>
         <N.NavTag href="/guestbook">GUESTBOOK</N.NavTag>
-        <N.NavTag href="https://dswuwis.store/chatbot" target="_blank">
-          CHATBOT
-        </N.NavTag>
         <N.NavTag href="/developer">DEVELOPER</N.NavTag>
         <NavList />
       </N.NavContent>
