@@ -1,11 +1,15 @@
 import * as DP from './ProjectStyle';
-import Ddoy from '../../img/Project/DDOY.svg';
 
 const DeveloperProfile = (props) => {
   return (
     <DP.DeveloperProfileContainer>
-      <DP.DeveloperImg src={Ddoy} url={props.bg} alt="개발자 이미지" />
-      <DP.Name>김채현</DP.Name>
+      {props && (
+        <>
+          <DP.DeveloperImg src={`https://dswuwis.store/${props.image}`} bg={props.bg} alt="개발자 이미지" />
+          <DP.Name>{props.name}</DP.Name>
+          <DP.Impression>{props.impression}</DP.Impression>
+        </>
+      )}
     </DP.DeveloperProfileContainer>
   );
 };
