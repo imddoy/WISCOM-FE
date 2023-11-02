@@ -18,7 +18,7 @@ export default function MainAnimation() {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5, // 50% 이상이 화면에 나타날 때 알림을 받음
+      threshold: 0.7, // 50% 이상이 화면에 나타날 때 알림을 받음
     };
 
     const handleIntersection = (entries) => {
