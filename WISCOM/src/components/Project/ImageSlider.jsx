@@ -40,7 +40,7 @@ const ImageSlider = () => {
   };
 
   const togglePause = () => {
-    setIsPaused((paused) => !paused); // 클릭할 때마다 일시 정지/재생을 토글
+    setIsPaused((paused) => !paused); // 클릭할 때마다 일시 정지/재생!
   };
 
   useEffect(() => {
