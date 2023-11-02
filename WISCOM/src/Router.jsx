@@ -6,6 +6,7 @@ import Project from './page/Project';
 import Developer from './page/Developer';
 import Map from './page/Map';
 import Nav from './components/common/Nav/Nav';
+import Chatbot from './page/Chatbot';
 
 function AppNavigation() {
   const location = useLocation();
@@ -31,6 +32,7 @@ function AppNavigation() {
           <Route path="/map" element={<Map />} />
           <Route path="/project/:post_id" element={<Project />} />
           <Route path="/developer" element={<Developer />} />
+          <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
       </GlobalWrapper>
     </>

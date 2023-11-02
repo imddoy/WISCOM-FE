@@ -47,9 +47,10 @@ const Nav = () => {
         <N.NavTag href="/">MAIN</N.NavTag>
         <N.NavTag href="/map">PROJECT</N.NavTag>
         <N.NavTag href="/guestbook">GUESTBOOK</N.NavTag>
-        <N.NavTag href="https://dswuwis.store/chatbot" target="_blank">
+        <N.NavTag href="/chatbot">CHATBOT</N.NavTag>
+        {/* <N.NavTag href="https://dswuwis.store/chatbot" target="_blank">
           CHATBOT
-        </N.NavTag>
+  </N.NavTag>*/}
         <N.NavTag href="/developer">DEVELOPER</N.NavTag>
         <NavList />
       </N.NavContent>
