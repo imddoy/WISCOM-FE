@@ -13,6 +13,7 @@ const ImageSlider = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
   const [isRightArrowHovered, setIsRightArrowHovered] = useState(false);
+  const [isPaused, setIsPaused] = useState(false); // 추가: 일시 정지 상태
 
   const handleLeftArrowMouseEnter = () => {
     setIsLeftArrowHovered(true);
@@ -38,6 +39,10 @@ const ImageSlider = () => {
     setCurrentIdx((preIdx) => (preIdx + 1) % slideImages.length);
   };
 
+  const togglePause = () => {
+    setIsPaused((paused) => !paused); // 클릭할 때마다 일시 정지/재생을 토글
+  };
+
   useEffect(() => {
     const nextPostId = Number(post_id) + 1;
     fetch(`http://13.124.248.135/posts/${nextPostId}/`, {
@@ -52,12 +57,14 @@ const ImageSlider = () => {
   }, [post_id]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 15000);
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        nextSlide();
+      }, 10000);
 
-    return () => clearInterval(interval);
-  }, [currentIdx, slideImages.length]);
+      return () => clearInterval(interval);
+    }
+  }, [currentIdx, slideImages.length, isPaused]);
 
   return (
     <I.ImageSliderContainer>
@@ -69,7 +76,9 @@ const ImageSlider = () => {
             onMouseLeave={handleLeftArrowMouseLeave}>
             <img src={isLeftArrowHovered ? LeftArrowHover : LeftArrow} alt="Previous" />
           </I.PreArrow>
-          <I.SliderBannerWrap>
+          <I.SliderBannerWrap onClick={togglePause}>
+            {' '}
+            {/* 추가: 클릭할 때 일시 정지/재생 토글 */}
             <I.SlideBanner>
               {slideImages.map((image, index) => (
                 <I.BannerImage

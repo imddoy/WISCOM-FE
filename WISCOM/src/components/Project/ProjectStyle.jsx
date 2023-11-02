@@ -380,58 +380,58 @@ export const DeveloperProfileContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-right: 10rem;
+  margin-right: 15rem;
 
   @media screen and (min-width: 1030px) and (max-width: 1200px) {
-    margin-right: 5rem;
+    margin-right: 10rem;
   }
 
   @media screen and (min-width: 900px) and (max-width: 1030px) {
-    margin-right: 2.5rem;
+    margin-right: 5rem;
   }
 
   @media screen and (min-width: 768px) and (max-width: 900px) {
-    margin-right: 0.5rem;
+    margin-right: 3rem;
     margin-left: 0.1rem;
     width: 265px;
   }
 
   @media screen and (min-width: 660px) and (max-width: 768px) {
-    margin-right: 0.25rem;
+    margin-right: 2rem;
     margin-left: 0.1rem;
     width: 250px;
   }
 
   @media screen and (min-width: 540px) and (max-width: 660px) {
-    margin-right: 0.25rem;
+    margin-right: 3rem;
     margin-left: 0.1rem;
     width: 200px;
   }
   @media screen and (min-width: 470px) and (max-width: 540px) {
-    margin-right: 0.2rem;
+    margin-right: 3rem;
     margin-left: 0.05rem;
     width: 150px;
   }
   @media screen and (min-width: 400px) and (max-width: 470px) {
-    margin-right: 0.15rem;
+    margin-right: 3rem;
     margin-left: 0.025rem;
     width: 130px;
   }
 
   @media screen and (min-width: 375px) and (max-width: 400px) {
-    margin-right: 0.1rem;
+    margin-right: 3rem;
     margin-left: 0.02rem;
     width: 100px;
   }
   @media screen and (min-width: 320px) and (max-width: 375px) {
-    margin-right: 0.1rem;
+    margin-right: 4rem;
     margin-left: 0.02rem;
     width: 90px;
   }
 `;
 
 export const DeveloperImg = styled.img`
-  width: 160px;
+  width: 200px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center top;

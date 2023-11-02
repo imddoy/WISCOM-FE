@@ -12,10 +12,6 @@ export const ImageSliderContainer = styled.div`
 `;
 
 export const SliderBannerWrap = styled.div`
-  // max-width: 100%;
-  // width: 1100px;
-  // height: 700px;
-
   width: 100%;
   max-width: 1100px;
   position: relative;
