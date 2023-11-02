@@ -27,14 +27,18 @@ function getRandomBackgroundImage() {
 }
 
 const Developer = () => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState([]);
 
-  useEffect(()=>{
-    axios.get('/developers')
-      .then(response => {
+  useEffect(() => {
+    axios
+      .get('http://13.124.248.135/developers')
+      .then((response) => {
         setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  },data);
+  }, data);
 
   const images = [];
   for (let i = 0; i < 4; i++) {
@@ -45,15 +49,12 @@ const Developer = () => {
     }
   }
 
-  console.log("확인");
-  console.log(data);
-
   return (
     <D.DevWrapper>
       <D.Box>
-        {images.map((bg, index) => (
+        {data.map((dev, index) => (
           <DeveloperContainer key={index}>
-            <DeveloperProfile bg={bg} />
+            <DeveloperProfile key={index} image={dev.image} name={dev.name} />
           </DeveloperContainer>
         ))}
       </D.Box>

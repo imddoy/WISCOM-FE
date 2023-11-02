@@ -29,9 +29,6 @@ export const SliderBannerWrap = styled.div`
 
   justify-content: center;
   margin: 0 auto; /* 필수!!!!! */
-
-  margin-left: 10%;
-  margin-right: 10%;
 `;
 
 export const SlideBanner = styled.div`
@@ -86,6 +83,7 @@ export const Arrow = styled.div`
 export const PreArrow = styled(Arrow)`
   left: 0;
   transform: rotate(180deg); /* 세로 가운데 정렬을 위해 추가 */
+  z-index: 300;
 `;
 
 export const NextArrow = styled(Arrow)`
