@@ -1,10 +1,11 @@
 import { styled, keyframes } from 'styled-components';
 
 export const drop = keyframes`
-0% ,
+0%,
 70%{
   left: 40vw;
   bottom: 60vw;
+  opacity: 0;
 }
 75%{
   left: 40vw;
@@ -29,14 +30,15 @@ export const AnimationWrapper = styled.div`
 export const Text = styled.p`
   color: ${(props) => props.theme.colors.white};
   font-family: Pretendard;
-  font-size: 2vw;
+  font-size: 1.4vw;
   text-align: center;
-  width: 100%;
+  width: 80vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   position: absolute;
-  bottom: 50vw;
+  bottom: 45vw;
+  left: 10vw;
   animation: ${fadein} 4s ease-in-out;
 `;
 
