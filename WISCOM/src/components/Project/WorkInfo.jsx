@@ -1,28 +1,33 @@
 import * as W from './ProjectStyle';
-import Circle from '../../img/Project/Circle.svg';
 
-const WorkInfo = () => {
+const WorkInfo = ({ data }) => {
   return (
     <W.WorkContainer>
-      <W.WorkLogo src={Circle} alt="작품 로고" />
-
-      <W.WorkInfoContent>
-        <W.Text fs="60px">WorkTitle</W.Text>
-        <W.Text fs="50px">teamName</W.Text>
-        <W.HashtagContainer>
-          <W.HashtagUpLine>
-            <W.HashtagGreen>#</W.HashtagGreen>
-            <W.HashtagYellow>해시태그</W.HashtagYellow>
-            <W.HashtagOrange>해시태그</W.HashtagOrange>
-            <W.HashtagPurple>해시태그</W.HashtagPurple>
-          </W.HashtagUpLine>
-          <W.HashtagDownLine>
-            <W.HashtagLightblue>해시태그</W.HashtagLightblue>
-            <W.HashtagPink>♡</W.HashtagPink>
-            <W.HashtagBlue>해시태그</W.HashtagBlue>
-          </W.HashtagDownLine>
-        </W.HashtagContainer>
-      </W.WorkInfoContent>
+      {data && (
+        <>
+          <W.WorkLogo src={`http://13.124.248.135/${data.logo}`} alt="작품 로고" />
+          <W.WorkInfoContent>
+            <W.Text fs="60px">{data.title}</W.Text>
+            <W.Text fs="50px">{data.team}</W.Text>
+            <W.HashtagContainer>
+              {/* 팀이 설정한 해시태그 */}
+              <W.HashtagUpLine>
+                <W.HashtagGreen>#</W.HashtagGreen>
+                <W.HashtagYellow>{data.tags.posts[0]}</W.HashtagYellow>
+                <W.HashtagOrange>{data.tags.posts[1]}</W.HashtagOrange>
+                <W.HashtagPurple>{data.tags.posts[2]}</W.HashtagPurple>
+              </W.HashtagUpLine>
+              {data.tags.comments.length > 0 && (
+                <W.HashtagDownLine>
+                  <W.HashtagLightblue>{data.tags.comments[0]}</W.HashtagLightblue>
+                  <W.HashtagPink>♡</W.HashtagPink>
+                  <W.HashtagBlue>{data.tags.comments[1]}</W.HashtagBlue>
+                </W.HashtagDownLine>
+              )}
+            </W.HashtagContainer>
+          </W.WorkInfoContent>
+        </>
+      )}
     </W.WorkContainer>
   );
 };

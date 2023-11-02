@@ -7,22 +7,45 @@ import BackYellow from '../../img/Project/BackgroundYellow.svg';
 
 const backgroundImages = [BackGreen, BackBlue, BackGreen, BackYellow];
 
-// 재사용 쉽도록 수정
-const Developer = () => {
+const Developer = ({ data }) => {
   return (
     <D.DeveloperContainer>
-      <D.DeTitle>DEVELOPER</D.DeTitle>
-      <D.UpBox>
-        {backgroundImages.slice(0, 2).map((bg, index) => (
-          <DeveloperProfile key={index} bg={bg} />
-        ))}
-      </D.UpBox>
+      {data && (
+        <>
+          <D.DeTitle>DEVELOPER</D.DeTitle>
+          <D.UpBox>
+            {data &&
+              backgroundImages.slice(0, 2).map(
+                (bg, index) =>
+                  data.developer[index] && ( // 데이터가 존재하는지 확인
+                    <DeveloperProfile
+                      key={index}
+                      bg={bg}
+                      image={data.developer[index].image}
+                      name={data.developer[index].name}
+                      impression={data.developer[index].impression}
+                    />
+                  ),
+              )}
+          </D.UpBox>
 
-      <D.DownBox>
-        {backgroundImages.slice(2).map((bg, index) => (
-          <DeveloperProfile key={index} bg={bg} />
-        ))}
-      </D.DownBox>
+          <D.DownBox>
+            {data &&
+              backgroundImages.slice(2).map(
+                (bg, index) =>
+                  data.developer[index + 2] && ( // 데이터가 존재하는지 확인
+                    <DeveloperProfile
+                      key={index}
+                      bg={bg}
+                      image={data.developer[index + 2].image}
+                      name={data.developer[index + 2].name}
+                      impression={data.developer[index + 2].impression}
+                    />
+                  ),
+              )}
+          </D.DownBox>
+        </>
+      )}
     </D.DeveloperContainer>
   );
 };
