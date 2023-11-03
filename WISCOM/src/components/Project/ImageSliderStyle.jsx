@@ -9,6 +9,11 @@ export const ImageSliderContainer = styled.div`
   position: relative; /* 부모 클래스에 relative 포지션을 추가 */
   margin-bottom: 200px;
 
+  @media (min-width: 1441px) {
+    margin: 0 auto; /* 정렬 필수!!!!! */
+    margin-bottom: 100px;
+  }
+
   @media (max-width: 425px) {
     margin-bottom: 100px;
   }
@@ -30,7 +35,10 @@ export const SliderBannerWrap = styled.div`
   margin-right: 10%;
 
   justify-content: center;
-  // margin: 0 auto; /* 필수!!!!! */
+
+  @media (min-width: 1440px) {
+    width: 1400px;
+  }
 `;
 
 export const SlideBanner = styled.div`
