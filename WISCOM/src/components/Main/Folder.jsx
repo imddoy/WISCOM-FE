@@ -25,7 +25,7 @@ export default function Folder() {
             }}>
             <F.Folder src={FolderImg}></F.Folder>
           </motion.div>
-          <F.FolderName></F.FolderName>
+          <F.FolderName>DSWU</F.FolderName>
         </F.FolderGroup>
         <F.FolderGroup href="/guestbook">
           <motion.div
@@ -45,7 +45,7 @@ export default function Folder() {
             }}>
             <F.Folder src={FolderImg}></F.Folder>
           </motion.div>
-          <F.FolderName></F.FolderName>
+          <F.FolderName>CSE</F.FolderName>
         </F.FolderGroup>
         <F.FolderGroup href="/developer">
           <motion.div
