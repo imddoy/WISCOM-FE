@@ -13,10 +13,9 @@ export const WorkContainer = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 426px) {
+  @media screen and (min-width: 319px) and (max-width: 426px) {
     font-size: 3rem;
   }
 `;
@@ -64,7 +63,7 @@ export const WorkLogo = styled.img`
     height: 22rem;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 426px) {
+  @media screen and (min-width: 319px) and (max-width: 426px) {
     flex-direction: column;
     align-items: center;
     margin-left: 0;
@@ -85,21 +84,25 @@ export const WorkInfoContent = styled.div`
 
 export const Text = styled.div`
   color: #20217d;
-  text-align: center;
+  text-align: left;
   font-size: ${(props) => props.fs};
   font-weight: 600;
   line-height: normal;
+  margin-left: 8rem;
+  padding-left: 5rem;
 
   @media (max-width: 1030px) {
-    margin-right: 100px;
     font-size: 95%;
-    margin: 0;
+  }
+
+  @media screen and (max-width: 814px) {
+    margin-left: 0rem;
+    text-align: center;
+    padding-left: 0rem;
   }
 
   @media (max-width: 768px) {
-    margin-right: 100px;
     font-size: 66%;
-    margin: 0;
   }
 `;
 
@@ -112,15 +115,19 @@ export const HashtagContainer = styled.div`
   padding-right: 5rem;
   font-size: 24px;
   white-space: nowrap;
+  left: 0;
 
   @media (max-width: 814px) {
     font-size: 18px;
-    margin: 0;
-    padding: 0;
+    margin-left: 0rem;
   }
 
   @media screen and (max-width: 426px) {
     font-size: 15px;
+  }
+
+  @media screen and (max-width: 380px) {
+    font-size: 9px;
   }
 `;
 
@@ -128,7 +135,7 @@ export const HashtagUpLine = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
-  margin-left: 40px;
+  margin-left: 0;
   margin-bottom: 10px;
 
   @media (max-width: 410px) {
@@ -282,17 +289,17 @@ export const PrjURL = styled.div`
 export const DeveloperContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 10rem;
-  padding-right: 10rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
 
-  @media screen and (min-width: 1030px) and (max-width: 1300px) {
-    padding-left: 2rem;
+  @media screen and (min-width: 1100px) and (max-width: 1300px) {
+    padding-left: 7rem;
     padding-right: 2rem;
   }
 
-  @media screen and (min-width: 950px) and (max-width: 1030px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  @media screen and (min-width: 950px) and (max-width: 1100px) {
+    padding-left: 5rem;
+    padding-right: 0rem;
   }
 
   @media screen and (min-width: 900px) and (max-width: 950px) {
@@ -305,19 +312,18 @@ export const DeveloperContainer = styled.div`
     padding-right: 0.025rem;
   }
 
-  @media screen and (min-width: 540px) and (max-width: 768px) {
+  @media screen and (min-width: 700px) and (max-width: 768px) {
     padding-left: 0.02rem;
-    padding-right: 0.02rem;
+    padding-right: 2rem;
   }
 
-  @media screen and (min-width: 470px) and (max-width: 540px) {
+  @media screen and (min-width: 630px) and (max-width: 700px) {
     padding-left: 0.015rem;
     padding-right: 0.015rem;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 470px) {
-    padding-left: 0.01rem;
-    padding-right: 0.01rem;
+  @media screen and (min-width: 319px) and (max-width: 630px) {
+    padding: 0;
   }
 `;
 
@@ -328,7 +334,7 @@ export const DeTitle = styled.div`
   line-height: normal;
   margin-bottom: 90px;
 
-  @media screen and (min-width: 768px) and (max-width: 1030px) {
+  @media screen and (min-width: 768px) and (max-width: 1100px) {
     font-size: 50px;
     margin-left: -2rem;
   }
@@ -347,7 +353,7 @@ export const DeTitle = styled.div`
     margin-bottom: 30px;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 376px) {
+  @media screen and (min-width: 319px) and (max-width: 376px) {
     font-size: 15px;
     margin-bottom: 20px;
     margin-left: -2rem;
@@ -359,10 +365,10 @@ export const UpBox = styled.div`
   margin-bottom: 100px;
 
   @media screen and (min-width: 470px) and (max-width: 660px) {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
   }
-  @media screen and (min-width: 320px) and (max-width: 470px) {
-    margin-bottom: 30px;
+  @media screen and (min-width: 319px) and (max-width: 470px) {
+    margin-bottom: 50px;
   }
 `;
 export const DownBox = styled.div`
@@ -372,58 +378,62 @@ export const DownBox = styled.div`
 
 /*DeveloperProfile 부분*/
 export const DeveloperProfileContainer = styled.div`
-  position: relative;
-
-  width: 300px;
-
   display: flex;
-  flex-direction: column;
+  position: relative;
   align-items: center;
+  flex-direction: column;
+  justify-content: center; //center or this
+  width: 250px;
 
   margin-right: 15rem;
 
-  @media screen and (min-width: 1030px) and (max-width: 1200px) {
+  @media screen and (min-width: 1100px) and (max-width: 1200px) {
+    margin-right: 13rem;
+  }
+
+  @media screen and (min-width: 900px) and (max-width: 1100px) {
     margin-right: 10rem;
   }
 
-  @media screen and (min-width: 900px) and (max-width: 1030px) {
-    margin-right: 5rem;
-  }
-
   @media screen and (min-width: 768px) and (max-width: 900px) {
-    margin-right: 3rem;
+    margin-right: 5rem;
     margin-left: 0.1rem;
-    width: 265px;
+    width: 230px;
   }
 
-  @media screen and (min-width: 660px) and (max-width: 768px) {
+  @media screen and (min-width: 700px) and (max-width: 768px) {
+    margin-right: 4rem;
+    margin-left: 0.1rem;
+    width: 230px;
+  }
+
+  @media screen and (min-width: 630px) and (max-width: 700px) {
     margin-right: 2rem;
     margin-left: 0.1rem;
-    width: 250px;
+    width: 230px;
   }
-
-  @media screen and (min-width: 540px) and (max-width: 660px) {
-    margin-right: 3rem;
-    margin-left: 0.1rem;
+  @media screen and (min-width: 550px) and (max-width: 630px) {
+    margin-right: 1.5rem;
+    margin-left: 0;
     width: 200px;
   }
-  @media screen and (min-width: 470px) and (max-width: 540px) {
+  @media screen and (min-width: 500px) and (max-width: 550px) {
     margin-right: 3rem;
-    margin-left: 0.05rem;
+    margin-left: 0;
     width: 150px;
   }
-  @media screen and (min-width: 400px) and (max-width: 470px) {
-    margin-right: 3rem;
-    margin-left: 0.025rem;
-    width: 130px;
-  }
 
-  @media screen and (min-width: 375px) and (max-width: 400px) {
-    margin-right: 3rem;
-    margin-left: 0.02rem;
+  @media screen and (min-width: 450px) and (max-width: 500px) {
+    margin-right: 6rem;
+    margin-left: 0;
     width: 100px;
   }
-  @media screen and (min-width: 320px) and (max-width: 375px) {
+  @media screen and (min-width: 400px) and (max-width: 450px) {
+    margin-right: 6rem;
+    margin-left: 0;
+    width: 70px;
+  }
+  @media screen and (min-width: 319px) and (max-width: 400px) {
     margin-right: 4rem;
     margin-left: 0.02rem;
     width: 90px;
@@ -431,36 +441,40 @@ export const DeveloperProfileContainer = styled.div`
 `;
 
 export const DeveloperImg = styled.img`
-  width: 200px;
+  width: 250px;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center top;
+  background-position: center;
   background-image: url(${(props) => props.bg});
 
   margin-bottom: 2.5rem;
 
-  @media screen and (min-width: 900px) and (max-width: 1030px) {
-    width: 130px;
+  @media screen and (min-width: 1100px) and (max-width: 1250px) {
+    width: 180px;
+  }
+
+  @media screen and (min-width: 900px) and (max-width: 1100px) {
+    width: 150px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 900px) {
     width: 110px;
   }
 
-  @media screen and (min-width: 660px) and (max-width: 768px) {
+  @media screen and (min-width: 700px) and (max-width: 768px) {
+    width: 100px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 700px) {
     width: 90px;
+    margin-bottom: 1rem;
   }
-  @media screen and (min-width: 470px) and (max-width: 660px) {
-    width: 60px;
-    margin-bottom: 0;
+  @media screen and (min-width: 350px) and (max-width: 550px) {
+    width: 70px;
+    margin-bottom: 0.5rem;
   }
-  @media screen and (min-width: 375px) and (max-width: 470px) {
+  @media screen and (min-width: 319px) and (max-width: 350px) {
     width: 50px;
-    margin-bottom: 0;
-  }
-  @media screen and (min-width: 320px) and (max-width: 375px) {
-    width: 40px;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -468,15 +482,22 @@ export const Name = styled.div`
   font-size: 3rem;
   font-weight: bold;
   color: #20217d;
+  position: absolute;
+  bottom: -20px;
 
-  @media screen and (min-width: 660px) and (max-width: 768px) {
+  @media screen and (min-width: 700px) and (max-width: 900px) {
     font-size: 2.3rem;
   }
 
-  @media screen and (min-width: 540px) and (max-width: 660px) {
+  @media screen and (min-width: 550px) and (max-width: 700px) {
     font-size: 2rem;
   }
-  @media screen and (min-width: 320px) and (max-width: 540px) {
+  @media screen and (min-width: 350px) and (max-width: 550px) {
+    bottom: -15px;
+    font-size: 1.5rem;
+  }
+  @media screen and (min-width: 319px) and (max-width: 350px) {
+    bottom: -10px;
     font-size: 1.3rem;
   }
 `;
@@ -485,15 +506,28 @@ export const Impression = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
   color: #20217d;
+  position: absolute;
+  bottom: -50px;
 
-  @media screen and (min-width: 660px) and (max-width: 768px) {
-    font-size: 1.3rem;
+  @media screen and (min-width: 700px) and (max-width: 900px) {
+    font-size: 2rem;
   }
 
-  @media screen and (min-width: 540px) and (max-width: 660px) {
-    font-size: 1.3rem;
+  @media screen and (max-width: 768px) {
+    bottom: -40px;
   }
-  @media screen and (min-width: 320px) and (max-width: 540px) {
+
+  @media screen and (min-width: 550px) and (max-width: 700px) {
+    font-size: 1.5rem;
+    bottom: -35px;
+  }
+  @media screen and (min-width: 350px) and (max-width: 550px) {
     font-size: 1rem;
+    bottom: -25px;
+  }
+
+  @media screen and (min-width: 319px) and (max-width: 350px) {
+    font-size: 1rem;
+    bottom: -20px;
   }
 `;
