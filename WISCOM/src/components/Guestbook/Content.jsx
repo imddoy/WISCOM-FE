@@ -1,57 +1,79 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as C from './ContentStyle';
+import axios from 'axios';
 
 export default function Content() {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    getDatas();
+  }, []);
+
+  const getDatas = async () => {
+    await axios
+      .get(`http://13.124.248.135/guests/`)
+      .then((response) => {
+        setData(response.data);
+        console.log('성공');
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('전체 글 불러오기 실패', error.message);
+      });
+  };
+
+  const CommentSubmit = (e) => {
+    if (inputText.trim() !== '' && name.trim() !== '') {
+      e.preventDefault();
+      axios
+        .post(`http://13.124.248.135/guests/`, {
+          name: name,
+          content: inputText,
+        })
+        .then((response) => {
+          console.log('작성 성공');
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log('작성 실패');
+          console.log(error.response.data);
+        });
+    }
+
+    setName([]);
+    setInputText([]);
+    getDatas();
+  };
+
   const [name, setName] = useState(''); //이름
   const [inputText, setInputText] = useState(''); // 입력된 텍스트를 저장하는 상태
   const maxLength = 200; // 최대 글자 수
   const [entries, setEntries] = useState([]); // 입력된 내용을 저장하는 배열
-  const entriesPerPage = 6; // 한 페이지에 보일 엔트리 개수
+  const entriesPerPage = 2; // 한 페이지에 보일 엔트리 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 
-  const getCurrentDate = () => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-    const day = now.getDate();
-    return `${year}-${month}-${day}`;
-  };
   const handleNameChange = (event) => {
-    setName(event.target.value);
+    const name = event.target.value;
+    if (name.length <= 7) {
+      setName(name);
+    }
   };
 
-  // 입력된 텍스트가 변경될 때 호출되는 함수
   const handleInputChange = (e) => {
-    const text = e.target.value;
-    if (text.length > maxLength) {
-      setInputText(text.slice(0, maxLength));
+    const content = e.target.value;
+    if (content.length > maxLength) {
+      setInputText(content.slice(0, maxLength));
     } else {
-      setInputText(text);
+      setInputText(content);
     }
   };
 
   const isSubmitDisabled = inputText === '' || inputText.length > maxLength || name === ''; //완료 버튼 비활성화 조건
 
-  // 완료 버튼 클릭 시 입력된 내용을 목록에 추가하는 함수
-  const handleAddEntry = () => {
-    if (inputText.trim() !== '') {
-      const newEntry = {
-        text: inputText,
-        date: getCurrentDate(),
-        name: name,
-      };
-
-      setEntries([newEntry, ...entries]);
-      setInputText(''); // 입력 필드 초기화
-      setName('');
-    }
-  };
-  // 현재 페이지의 엔트리 배열
   const startIndex = (currentPage - 1) * entriesPerPage;
   const endIndex = startIndex + entriesPerPage;
   const currentEntries = entries.slice(startIndex, endIndex);
 
-  // 페이지 변경 처리
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -67,7 +89,7 @@ export default function Content() {
       <C.InputBox>
         <C.CommentInput
           type="text"
-          placeholder="이름을 입력해주세요" // 이름을 입력할 플레이스홀더 추가
+          placeholder="이름을 7자 이내로 입력해주세요" // 이름을 입력할 플레이스홀더 추가
           value={name}
           onChange={handleNameChange} // 이름을 입력하는 이벤트 핸들러 추가
         />
@@ -83,25 +105,28 @@ export default function Content() {
       </C.InputBox>
       <br />
 
-      <C.Button onClick={handleAddEntry} disabled={isSubmitDisabled}>
+      <C.Button onClick={CommentSubmit} disabled={isSubmitDisabled}>
         완료
       </C.Button>
 
       <C.Entries>
-        {currentEntries.map((entry, index) => (
-          <C.EntryItem key={index}>
-            <C.EntryDate>
-              {entry.name} {entry.date}
-            </C.EntryDate>
-            <br />
-            <C.EntryText>{entry.text}</C.EntryText>
-          </C.EntryItem>
-        ))}
+        {data.results &&
+          data.results.map((entry, index) => (
+            <C.EntryItem key={index}>
+              <C.EntryDate>
+                {entry.name} {entry.date}
+              </C.EntryDate>
+              <br />
+              <C.EntryWrapper>
+                <C.EntryText>{entry.content}</C.EntryText>
+              </C.EntryWrapper>
+            </C.EntryItem>
+          ))}
       </C.Entries>
 
       <C.Pagination>
         <ul>
-          {Array.from({ length: Math.ceil(entries.length / entriesPerPage) }).map((_, index) => (
+          {Array.from({ length: Math.ceil(data.count / entriesPerPage) }).map((_, index) => (
             <li
               key={index}
               onClick={() => handlePageChange(index + 1)}
