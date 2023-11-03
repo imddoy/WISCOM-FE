@@ -43,7 +43,7 @@ const ProjectWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  @media (max-width: 320px) {
+  @media (max-width: 319.9px) {
     display: none;
   }
 `;

@@ -11,7 +11,6 @@ const Developer = ({ data }) => {
   const developerLength = data && data.developer.length;
   const upBoxData = data && data.developer.slice(2, developerLength);
   const downBoxData = data && data.developer.slice(0, Math.min(2, developerLength));
-
   return (
     <D.DeveloperContainer>
       {data && (
