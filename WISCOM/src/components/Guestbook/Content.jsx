@@ -17,7 +17,10 @@ export default function Content() {
     return `${year}-${month}-${day}`;
   };
   const handleNameChange = (event) => {
-    setName(event.target.value);
+    const name = event.target.value;
+    if (name.length <= 7) {
+      setName(name);
+    }
   };
 
   // 입력된 텍스트가 변경될 때 호출되는 함수
@@ -67,19 +70,20 @@ export default function Content() {
       <C.InputBox>
         <C.CommentInput
           type="text"
-          placeholder="이름을 입력해주세요" // 이름을 입력할 플레이스홀더 추가
+          placeholder="이름을 7자 이내로 입력해주세요" // 이름을 입력할 플레이스홀더 추가
           value={name}
           onChange={handleNameChange} // 이름을 입력하는 이벤트 핸들러 추가
         />
-        <C.ContentInput
-          placeholder="방명록을 작성해주세요"
-          value={inputText}
-          onChange={handleInputChange}
-          maxLength={maxLength}
-        />
+          <C.ContentInput
+            placeholder="방명록을 작성해주세요"
+            value={inputText}
+            onChange={handleInputChange}
+            maxLength={maxLength}
+          />
         <C.InputCount>
           {inputText.length}/{maxLength}
         </C.InputCount>
+        
       </C.InputBox>
       <br />
 
@@ -94,7 +98,9 @@ export default function Content() {
               {entry.name} {entry.date}
             </C.EntryDate>
             <br />
+            <C.EntryWrapper>
             <C.EntryText>{entry.text}</C.EntryText>
+            </C.EntryWrapper>
           </C.EntryItem>
         ))}
       </C.Entries>
