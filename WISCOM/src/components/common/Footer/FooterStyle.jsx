@@ -68,6 +68,7 @@ export const Names = styled.div`
   width: 1600px;
   display: flex;
   flex-direction: row;
+  flex-basis:100%;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -81,6 +82,21 @@ export const Names = styled.div`
 export const NameEach = styled.div`
   padding-bottom: 2rem;
 `;
+
+export const Area = styled.div`
+  :nth-child(1) {
+    order: 0;
+  }
+
+  :nth-child(2) {
+    order: 1;
+  }
+
+  :nth-child(3) {
+    order: 2;
+  }
+`;
+
 export const InfoContainer = styled.div`
   margin-top: 10rem;
 `;
