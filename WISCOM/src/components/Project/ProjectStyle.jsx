@@ -91,18 +91,24 @@ export const Text = styled.div`
   margin-left: 8rem;
   padding-left: 5rem;
 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   @media (max-width: 1030px) {
     font-size: 95%;
   }
 
-  @media screen and (max-width: 814px) {
-    margin-left: 0rem;
+  @media screen (min-width: 768px) and (max-width: 814px) {
     text-align: center;
-    padding-left: 0rem;
+    margin-left: 0rem;
   }
 
   @media (max-width: 768px) {
     font-size: 66%;
+    padding-left: 0rem;
+    margin-left: 0rem;
+    text-align: center;
   }
 `;
 
