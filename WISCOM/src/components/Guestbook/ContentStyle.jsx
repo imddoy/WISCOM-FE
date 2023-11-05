@@ -138,28 +138,26 @@ export const Entries = styled.div`
 
 export const EntryItem = styled.div`
   background-color: #eeeeee;
-  /* width: 200px; */
   height: 300px;
   padding: 17px;
   margin: 15px;
   border-radius: 20px;
-  flex-basis: calc(33.33% - 30px);
   font-weight: bold;
   line-height: 1.3;
   color: black; /* 글씨 색상 설정 */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   word-break: break-all;
-  @media screen and (min-width: 0px) and (max-width: 700px) {
-    margin: 10px;
-    flex-basis: calc(100% - 20px);
-    line-height: 1.2;
-  }
+  flex-basis: calc(100% - 20px);
+
   @media screen and (min-width: 701px) and (max-width: 900px) {
     margin: 10px;
-    flex-basis: calc(50% - 20px);
-    line-height: 1.2;
+    flex-basis: calc(50% - 20px); /* 2 per row (701-900px) */
   }
 
+  @media screen and (min-width: 901px) {
+    margin: 10px;
+    flex-basis: calc(33.33% - 20px); /* 3 per row (901px and above) */
+  }
 `;
 export const EntryDate = styled.span`
   font-size: 17px;
