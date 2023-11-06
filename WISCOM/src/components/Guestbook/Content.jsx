@@ -54,7 +54,7 @@ export default function Content() {
 
   const handleNameChange = (event) => {
     const name = event.target.value;
-    if (name.length <= 7) {
+    if (name.length <= 5) {
       setName(name);
     }
   };
@@ -95,7 +95,7 @@ export default function Content() {
       <C.InputBox>
         <C.CommentInput
           type="text"
-          placeholder="이름을 7자 이내로 입력해주세요" // 이름을 입력할 플레이스홀더 추가
+          placeholder="이름을 5자 이내로 입력해주세요" // 이름을 입력할 플레이스홀더 추가
           value={name}
           onChange={handleNameChange} // 이름을 입력하는 이벤트 핸들러 추가
         />
