@@ -15,8 +15,11 @@ const resposiveFontSize = css`
 export const FooterWrapper = styled.div`
   background-color: black;
   padding: 3em;
+  padding-top: 10em;
   padding-bottom: 8em;
   letter-spacing: 2px;
+  padding-left: 8em;
+  padding-right: 8em;
 `;
 
 export const FooterTitle = styled.div`
@@ -66,7 +69,8 @@ export const Category = styled.div`
 
 export const Names = styled.div`
   /* width: 1600px; 
-  이거 해제하니까 졸준위 flex 먹음*/
+  이거 해제하니까 졸준위 flex 먹음
+  있을 땐 졸준위 이름 박스가 flex 안먹었음*/
   display: flex;
   flex-direction: row;
   flex-basis:100%;
@@ -86,6 +90,7 @@ export const NameEach = styled.div`
 
 export const Area = styled.div`
   flex-direction: column;
+  flex-basis: 100%
   /* width: 1600px; */
   /* :nth-child(1) {
     order: 0;
