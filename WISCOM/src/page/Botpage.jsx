@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Bot from '../components/Chatbot/Bot';
+import back from './../../src/img/Main/Folder.svg';
+import face from './../../src/img/face.png';
 
 const ChatbotContainer = styled.div`
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
@@ -9,8 +11,10 @@ const ChatbotContainer = styled.div`
 const ChatBtn = styled.button`
   width: 70px;
   height: 70px;
-  border-radius: 50%;
-  background-color: #75ff72;
+  background-image: url(${face}), url(${back});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%, 100%;
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
@@ -31,7 +35,7 @@ export default function Botpage() {
 
   return (
     <div>
-      <ChatBtn onClick={toggleChatbot}>Bot</ChatBtn>
+      <ChatBtn onClick={toggleChatbot}></ChatBtn>
       <ChatbotContainer isOpen={isChatbotOpen}>
         <Bot toggleChatbot={toggleChatbot} />
       </ChatbotContainer>
