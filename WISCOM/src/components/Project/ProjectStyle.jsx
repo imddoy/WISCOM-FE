@@ -295,252 +295,83 @@ export const PrjURL = styled.div`
 export const DeveloperContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 15rem;
-  padding-right: 15rem;
-
-  @media screen and (min-width: 1100px) and (max-width: 1300px) {
-    padding-left: 7rem;
-    padding-right: 2rem;
-  }
-
-  @media screen and (min-width: 950px) and (max-width: 1100px) {
-    padding-left: 5rem;
-    padding-right: 0rem;
-  }
-
-  @media screen and (min-width: 900px) and (max-width: 950px) {
-    padding-left: 0.05rem;
-    padding-right: 0.05rem;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 900px) {
-    padding-left: 0.025rem;
-    padding-right: 0.025rem;
-  }
-
-  @media screen and (min-width: 700px) and (max-width: 768px) {
-    padding-left: 0.02rem;
-    padding-right: 2rem;
-  }
-
-  @media screen and (min-width: 630px) and (max-width: 700px) {
-    padding-left: 0.015rem;
-    padding-right: 0.015rem;
-  }
-
-  @media screen and (min-width: 319px) and (max-width: 630px) {
-    padding: 0;
-  }
+  gap: 2.5vw;
+  padding: 0 8vw;
+  margin: 0.5vw;
 `;
 
 export const DeTitle = styled.div`
   color: #20217d;
-  font-size: 60px;
+  font-size: 3vw;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: 90px;
-
-  @media screen and (min-width: 768px) and (max-width: 1100px) {
-    font-size: 50px;
-    margin-left: -2rem;
-  }
-
-  @media screen and (min-width: 426px) and (max-width: 768px) {
-    font-size: 40px;
-    margin-bottom: 50px;
-  }
-
-  @media screen and (min-width: 426px) and (max-width: 760px) {
-    font-size: 20px;
-    margin-bottom: 40px;
-  }
-  @media screen and (min-width: 376px) and (max-width: 426px) {
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-
-  @media screen and (min-width: 319px) and (max-width: 376px) {
-    font-size: 15px;
-    margin-bottom: 20px;
-    margin-left: -2rem;
-  }
 `;
 
 export const UpBox = styled.div`
   display: flex;
-  margin-bottom: 150px;
-
-  @media screen and (min-width: 470px) and (max-width: 660px) {
-    margin-bottom: 70px;
-  }
-  @media screen and (min-width: 319px) and (max-width: 470px) {
-    margin-bottom: 50px;
-  }
+  justify-content: center;
+  gap: 12vw;
+  margin-right: ${(props) => (props.isThreeItems ? '0' : '12vw')};
 `;
 export const DownBox = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 12vw;
+  margin-left: ${(props) => (props.isThreeItems ? '0' : '12vw')};
 `;
 
 /*DeveloperProfile 부분*/
 export const DeveloperProfileContainer = styled.div`
   display: flex;
-  position: relative;
   align-items: center;
   flex-direction: column;
-  justify-content: center; //center or this
-  width: 250px;
-  height: 20vw;
-  margin-right: 15rem;
-
-  @media screen and (min-width: 1100px) and (max-width: 1200px) {
-    margin-right: 13rem;
-  }
-
-  @media screen and (min-width: 900px) and (max-width: 1100px) {
-    margin-right: 10rem;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 900px) {
-    margin-right: 5rem;
-    margin-left: 0.1rem;
-    width: 230px;
-  }
-
-  @media screen and (min-width: 700px) and (max-width: 768px) {
-    margin-right: 4rem;
-    margin-left: 0.1rem;
-    width: 230px;
-  }
-
-  @media screen and (min-width: 630px) and (max-width: 700px) {
-    margin-right: 2rem;
-    margin-left: 0.1rem;
-    width: 230px;
-  }
-  @media screen and (min-width: 550px) and (max-width: 630px) {
-    margin-right: 1.5rem;
-    margin-left: 0;
-    width: 200px;
-  }
-  @media screen and (min-width: 500px) and (max-width: 550px) {
-    margin-right: 3rem;
-    margin-left: 0;
-    width: 150px;
-  }
-
-  @media screen and (min-width: 450px) and (max-width: 500px) {
-    margin-right: 6rem;
-    margin-left: 0;
-    width: 100px;
-  }
-  @media screen and (min-width: 400px) and (max-width: 450px) {
-    margin-right: 6rem;
-    margin-left: 0;
-    width: 70px;
-  }
-  @media screen and (min-width: 319px) and (max-width: 400px) {
-    margin-right: 4rem;
-    margin-left: 0.02rem;
-    width: 90px;
+  justify-content: space-between;
+  width: 15vw;
+  height: 22vw;
+  @media screen and (max-width: 400px) {
+    height: 25vw;
   }
 `;
-
-export const DeveloperImg = styled.img`
-  width: 250px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  background-image: url(${(props) => props.bg});
-
-  margin-bottom: 2.5rem;
-
-  @media screen and (min-width: 1100px) and (max-width: 1250px) {
-    width: 180px;
-  }
-
-  @media screen and (min-width: 900px) and (max-width: 1100px) {
-    width: 150px;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 900px) {
-    width: 110px;
-  }
-
-  @media screen and (min-width: 700px) and (max-width: 768px) {
-    width: 100px;
-  }
-  @media screen and (min-width: 550px) and (max-width: 700px) {
-    width: 90px;
-    margin-bottom: 1rem;
-  }
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    width: 70px;
-    margin-bottom: 0.5rem;
-  }
-  @media screen and (min-width: 319px) and (max-width: 350px) {
-    width: 50px;
-    margin-bottom: 0.5rem;
-  }
+export const DeveloperImg = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+`;
+export const BackgroundImg = styled.img`
+  height: 12vw;
+`;
+export const PersonalImg = styled.img`
+  height: 12vw;
+  position: absolute;
+  bottom: 0;
 `;
 
 export const Name = styled.div`
-  font-size: 3rem;
+  font-size: 2vw;
   font-weight: bold;
   color: #20217d;
-  position: absolute;
-  top: 18vw;
+  margin-top: 0.5vw;
 
-  @media screen and (min-width: 700px) and (max-width: 900px) {
-    font-size: 2.3rem;
-  }
-
-  @media screen and (min-width: 550px) and (max-width: 700px) {
-    font-size: 2rem;
-  }
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    bottom: -15px;
-    font-size: 1.5rem;
-  }
-  @media screen and (min-width: 319px) and (max-width: 350px) {
-    bottom: -10px;
-    font-size: 1.3rem;
+  @media screen and (max-width: 400px) {
+    font-size: 3vw;
   }
 `;
 
 export const Impression = styled.div`
-  width: 20vw;
-  height: 8vw;
-  font-size: 2rem;
+  width: 15vw;
+  height: 4.7vw;
+  font-size: 1.2vw;
   font-weight: bold;
   color: #20217d;
-  position: absolute;
-  top: 23vw;
   overflow-y: scroll;
+  margin: 1vw 0;
   &::-webkit-scrollbar {
     display: none;
     width: 0;
   }
 
-  @media screen and (min-width: 700px) and (max-width: 900px) {
-    font-size: 2rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    bottom: -40px;
-  }
-
-  @media screen and (min-width: 550px) and (max-width: 700px) {
-    font-size: 1.5rem;
-    bottom: -35px;
-  }
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    font-size: 1rem;
-    bottom: -25px;
-  }
-
-  @media screen and (min-width: 319px) and (max-width: 350px) {
-    font-size: 1rem;
-    bottom: -20px;
+  @media screen and (max-width: 400px) {
+    font-size: 1.8vw;
+    height: 8vw;
   }
 `;

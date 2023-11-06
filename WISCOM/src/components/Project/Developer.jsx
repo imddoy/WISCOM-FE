@@ -11,12 +11,14 @@ const Developer = ({ data }) => {
   const developerLength = data && data.developer.length;
   const upBoxData = data && data.developer.slice(2, developerLength);
   const downBoxData = data && data.developer.slice(0, Math.min(2, developerLength));
+  const isThreeItems = upBoxData?.length === 3;
+
   return (
     <D.DeveloperContainer>
       {data && (
         <>
           <D.DeTitle>DEVELOPER</D.DeTitle>
-          <D.UpBox>
+          <D.UpBox isThreeItems={isThreeItems}>
             {upBoxData.map((developer, index) => (
               <DeveloperProfile
                 key={index}
@@ -28,7 +30,7 @@ const Developer = ({ data }) => {
             ))}
           </D.UpBox>
 
-          <D.DownBox>
+          <D.DownBox isThreeItems={isThreeItems}>
             {downBoxData.map((developer, index) => (
               <DeveloperProfile
                 key={index}
