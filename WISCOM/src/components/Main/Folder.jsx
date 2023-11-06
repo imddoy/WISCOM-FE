@@ -17,7 +17,7 @@ export default function Folder() {
           <F.FolderName>PROJECT</F.FolderName>
         </F.FolderGroup>
 
-        <F.FolderGroup href="/">
+        <F.FolderGroup href="https://www.duksung.ac.kr/">
           <motion.div
             whileHover={{
               scale: 1.2,
@@ -37,7 +37,7 @@ export default function Folder() {
           </motion.div>
           <F.FolderName>GUESTBOOK</F.FolderName>
         </F.FolderGroup>
-        <F.FolderGroup href="/">
+        <F.FolderGroup href="https://www.duksung.ac.kr/computer/main.do">
           <motion.div
             whileHover={{
               scale: 1.2,
