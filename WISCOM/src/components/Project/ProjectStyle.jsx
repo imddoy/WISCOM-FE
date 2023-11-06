@@ -368,7 +368,7 @@ export const DeTitle = styled.div`
 
 export const UpBox = styled.div`
   display: flex;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 
   @media screen and (min-width: 470px) and (max-width: 660px) {
     margin-bottom: 70px;
@@ -390,7 +390,7 @@ export const DeveloperProfileContainer = styled.div`
   flex-direction: column;
   justify-content: center; //center or this
   width: 250px;
-
+  height: 20vw;
   margin-right: 15rem;
 
   @media screen and (min-width: 1100px) and (max-width: 1200px) {
@@ -489,7 +489,7 @@ export const Name = styled.div`
   font-weight: bold;
   color: #20217d;
   position: absolute;
-  bottom: -20px;
+  top: 18vw;
 
   @media screen and (min-width: 700px) and (max-width: 900px) {
     font-size: 2.3rem;
@@ -509,11 +509,18 @@ export const Name = styled.div`
 `;
 
 export const Impression = styled.div`
-  font-size: 2.5rem;
+  width: 20vw;
+  height: 8vw;
+  font-size: 2rem;
   font-weight: bold;
   color: #20217d;
   position: absolute;
-  bottom: -50px;
+  top: 23vw;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
 
   @media screen and (min-width: 700px) and (max-width: 900px) {
     font-size: 2rem;

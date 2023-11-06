@@ -1,5 +1,6 @@
 import { createChatBotMessage } from 'react-chatbot-kit';
 import Header from './Header';
+import * as C from './ChatStyle';
 
 const config = (toggleChatbot) => ({
   initialMessages: [
@@ -13,15 +14,22 @@ const config = (toggleChatbot) => ({
     {
       widgetName: 'infoOptions',
       widgetFunc: (props) => (
-        <div>
-          <button onClick={() => props.actionProvider.handleInfoDetails()}>1. 정보 원해</button>
-          <button onClick={() => props.actionProvider.handleTestDetails()}>2. 테스트 하기</button>
-        </div>
+        <C.AnswerWrapper>
+          <C.AnswerBtn onClick={() => props.actionProvider.handleInfoDetails()}>정보를 원해</C.AnswerBtn>
+          <C.AnswerBtn onClick={() => props.actionProvider.handleTestDetails()}>테스트하러 가기</C.AnswerBtn>
+        </C.AnswerWrapper>
       ),
     },
     {
       widgetName: 'infoDetails',
-      widgetFunc: (props) => <div>1. 몇시까지 하나요 2. 어디서 하나요</div>,
+      widgetFunc: (props) => (
+        <C.AnswerWrapper>
+          <C.AnswerBtn onClick={() => props.actionProvider.handleClockDetails()}>몇시까지 운영하나요?</C.AnswerBtn>
+          <C.AnswerBtn onClick={() => props.actionProvider.handleWhoDetails()}>
+            컴공이 아니어도 갈 수 있나요?
+          </C.AnswerBtn>
+        </C.AnswerWrapper>
+      ),
     },
     {
       widgetName: 'testDetails',

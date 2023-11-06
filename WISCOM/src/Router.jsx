@@ -36,7 +36,6 @@ function AppNavigation() {
           <Route path="/map" element={<Map />} />
           <Route path="/project/:post_id" element={<Project />} />
           <Route path="/developer" element={<Developer />} />
-          <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
       </GlobalWrapper>
       <Footer />

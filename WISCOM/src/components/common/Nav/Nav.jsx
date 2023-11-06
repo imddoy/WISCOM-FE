@@ -55,7 +55,7 @@ const Nav = () => {
         <N.Text>{Title}</N.Text>
       </N.LogoImg>
 
-      {location.pathname === '/map' && (
+      {(location.pathname === '/map' || location.pathname.includes('project')) && (
         <N.TeamWrapper>
           <N.TeamContent>
             {TeamList.map((team, index) => (
