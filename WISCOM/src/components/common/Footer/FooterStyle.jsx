@@ -65,9 +65,11 @@ export const Category = styled.div`
 `;
 
 export const Names = styled.div`
-  width: 1600px;
+  /* width: 1600px; 
+  이거 해제하니까 졸준위 flex 먹음*/
   display: flex;
   flex-direction: row;
+  flex-basis:100%;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -81,6 +83,23 @@ export const Names = styled.div`
 export const NameEach = styled.div`
   padding-bottom: 2rem;
 `;
+
+export const Area = styled.div`
+  flex-direction: column;
+  /* width: 1600px; */
+  /* :nth-child(1) {
+    order: 0;
+  }
+
+  :nth-child(2) {
+    order: 1;
+  }
+
+  :nth-child(3) {
+    order: 2;
+  } */
+`;
+
 export const InfoContainer = styled.div`
   margin-top: 10rem;
 `;

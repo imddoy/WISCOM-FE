@@ -53,9 +53,9 @@ const Developer = () => {
     <D.DevWrapper>
       <D.Box>
         {data.map((dev, index) => (
-          <DeveloperContainer key={index}>
+          <D.DeveloperContainer key={index}>
             <DeveloperProfile key={index} image={dev.image} name={dev.name} />
-          </DeveloperContainer>
+          </D.DeveloperContainer>
         ))}
       </D.Box>
     </D.DevWrapper>
