@@ -1,6 +1,5 @@
 import * as D from './DevsStyle';
 import DeveloperProfile from '../Project/DeveloperProfile.jsx';
-import { DeveloperContainer } from '../Project/ProjectStyle';
 
 import BackBlue from '../../img/Developer/BackgroundBlue.svg';
 import BackGreen from '../../img/Developer/BackgroundGreen.svg';
@@ -8,58 +7,65 @@ import BackYellow from '../../img/Developer/BackgroundYellow.svg';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const backgroundImages2 = [BackGreen, BackBlue, BackYellow];
-
-function shuffleArray(arr) {
-  const shuffledArray = [...arr];
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-  return shuffledArray;
-}
-
-const shuffledImages = shuffleArray(backgroundImages2);
-
-function getRandomBackgroundImage() {
-  const randomIndex = Math.floor(Math.random() * shuffledImages.length);
-  return shuffledImages[randomIndex];
-}
-
 const Developer = () => {
-  const [data, setData] = useState([]);
+  const [developerData, setDeveloperData] = useState([]);
+  const [backgroundImages, setBackgroundImages] = useState([]);
 
   useEffect(() => {
+    // Fetch developer data
     axios
       .get('http://13.124.248.135/developers')
       .then((response) => {
-        setData(response.data);
+        setDeveloperData(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, data);
+  }, []);
 
-  const images = [];
-  for (let i = 0; i < 4; i++) {
-    if (i === 3) {
-      images.push(getRandomBackgroundImage());
-    } else {
-      images.push(shuffledImages[i]);
+  useEffect(() => {
+    // Generate random background images when developer data is available
+    if (developerData.length > 0) {
+      const shuffledImages = shuffleArray(backgroundImages2);
+
+      const randomBackgroundImages = developerData.map((dev, index) => {
+        if (index < 3) {
+          return shuffledImages[index];
+        } else {
+          const randomIndex = Math.floor(Math.random() * 3);
+          return shuffledImages[randomIndex];
+        }
+      });
+
+      setBackgroundImages(randomBackgroundImages);
     }
-  }
+  }, [developerData]);
 
-  return (
-    <D.DevWrapper>
-      <D.Box>
-        {data.map((dev, index) => (
-          <D.DeveloperContainer key={index}>
-            <DeveloperProfile key={index} image={dev.image} name={dev.name} />
-          </D.DeveloperContainer>
-        ))}
-      </D.Box>
-    </D.DevWrapper>
-  );
+  const renderDeveloperCards = () => {
+    if (developerData.length === 0) {
+      return null;
+    }
+
+    const developerCards = developerData.map((dev, index) => (
+      <D.DeveloperContainer key={index}>
+        <DeveloperProfile bg={backgroundImages[index]} image={dev.image} name={dev.name} />
+      </D.DeveloperContainer>
+    ));
+
+    const rows = [];
+    for (let i = 0; i < developerCards.length; i += 4) {
+      const row = developerCards.slice(i, i + 4);
+      rows.push(
+        <D.Box key={i}>
+          {row}
+        </D.Box>
+      );
+    }
+
+    return rows;
+  };
+
+  return <D.DevWrapper>{renderDeveloperCards()}</D.DevWrapper>;
 };
 
 export default Developer;
