@@ -6,7 +6,6 @@ import Project from './page/Project';
 import Developer from './page/Developer';
 import Map from './page/Map';
 import Nav from './components/common/Nav/Nav';
-import Chatbot from './page/Botpage';
 import Footer from './components/common/Footer/Footer';
 
 function AppNavigation() {
