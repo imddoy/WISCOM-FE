@@ -38,7 +38,7 @@ const Nav = () => {
   }, [location.pathname]);
 
   const onClickPrj = (index) => {
-    window.location.href = `project/${index}`;
+    window.location.pathname = `/project/${index}`;
   };
 
   return (
