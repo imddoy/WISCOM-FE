@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Bot from '../components/Chatbot/Bot';
 import back from './../../src/img/Main/Folder.svg';
-import face from './../../src/img/face.png';
+import face from './../../src/img/Main/face.png';
 
 const ChatbotContainer = styled.div`
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
