@@ -41,9 +41,7 @@ const Comment = (post_id) => {
         })
         .then((response) => {
           console.log('작성 성공');
-          setName(''); // 상태 초기화 위치 변경
-          setInputText(''); // 상태 초기화 위치 변경
-          getDatas(); // 데이터 다시 가져오기
+          window.location.reload();
         })
         .catch((error) => {
           console.log('작성 실패', error.message);
