@@ -17,10 +17,32 @@ export const CommentTextBox = styled.div`
 `;
 
 export const CommentTagList = styled.div`
-  margin-left: 30px;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: row;
+border-top-left-radius: 45px;
+border-top-right-radius: 45px;
+padding: 30px 30px;
+display: flex;
+flex-wrap: nowrap;
+gap: 10px;
+overflow-x: scroll;
+overflow-y: hidden;
+width: 100%;
+white-space: nowrap;
+-ms-overflow-style: none; /* for Internet Explorer, Edge */
+scrollbar-width: none; /* for Firefox */
+-webkit-overflow-scrolling: touch; // iOS 기기에서 스크롤 성능 향상
+
+// 웹킷 기반 브라우저에서 스크롤바 숨기기
+&::-webkit-scrollbar {
+  display: none; // 
+}
+
+// 파이어폭스에서 스크롤바 숨기기
+scrollbar-width: none; 
+
+// IE와 엣지에서 스크롤바 숨기기
+-ms-overflow-style: none; 
+
+}
 `;
 
 export const CommentInput = styled.input`
@@ -29,7 +51,7 @@ export const CommentInput = styled.input`
   resize: none;
   color: white;
   font-size: 30px;
-  margin: 30px 30px 10px;
+  margin: 0px 30px 10px;
   font-family: 'Pretendard';
 
   &:focus {
@@ -232,51 +254,31 @@ export const CommentContent = styled.div`
 
 export const CommentTagsWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 export const CommentSelectedTag = styled.div`
-  width: 110px;
   height: 50px;
   border-radius: 50px;
   background-color: #fff;
   color: #000;
+  padding: 0 15px;
 
   margin: 0 10px 10px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 321px) and (max-width: 393px) {
-    width: 80px;
-    height: 25px;
+  @media screen and (min-width: 319px) and (max-width: 700px) {
+    height: 35px;
+    white-space: nowrap:
   }
 
-  @media screen and (min-width: 393px) and (max-width: 530px) {
-    width: 90px;
-    height: 30px;
-  }
-
-  @media screen and (min-width: 530px) and (max-width: 700px) {
-    width: 105px;
-    height: 40px;
-  }
-
-  @media screen and (min-width: 701px) and (max-width: 900px) {
-    width: 110px;
-    height: 50px;
-  }
-
-  @media screen and (min-width: 900px) and (max-width: 1150px) {
-    width: 80px;
-    height: 50px;
-  }
-
-  @media screen and (min-width: 1100px) and (max-width: 1200px) {
-    width: 90px;
-    height: 50px;
+  @media screen and (min-width: 700px) and (max-width: 900px) {
+    height: 45px;
+    white-space: nowrap:
   }
 `;
 
@@ -284,28 +286,16 @@ export const CommentP = styled.p`
   font-size: 26px;
   font-weight: bold;
 
-  @media screen and (max-width: 393px) {
-    font-size: 12px;
-  }
-
-  @media screen and (min-width: 393px) and (max-width: 530px) {
-    font-size: 16px;
+  @media screen and (min-width: 319px) and (max-width: 530px) {
+    font-size: 15px;
   }
 
   @media screen and (min-width: 530px) and (max-width: 700px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 700px) and (max-width: 900px) {
     font-size: 20px;
-  }
-
-  @media screen and (min-width: 701px) and (max-width: 900px) {
-    font-size: 24px;
-  }
-
-  @media screen and (min-width: 900px) and (max-width: 1150px) {
-    font-size: 22px;
-  }
-
-  @media screen and (min-width: 1100px) and (max-width: 1200px) {
-    font-size: 24px;
   }
 `;
 

@@ -70,10 +70,18 @@ const Comment = (post_id) => {
 
   const handleTagClick = (tagId) => {
     setSelectedTags((prevTags) => {
+      // 이미 선택된 태그를 클릭한 경우, 그 태그를 제거합니다.
       if (prevTags.includes(tagId)) {
         return prevTags.filter((tag) => tag !== tagId);
       } else {
-        return [...prevTags, tagId];
+        // 선택된 태그가 5개 미만인 경우에만 새 태그를 추가합니다.
+        if (prevTags.length < 5) {
+          return [...prevTags, tagId];
+        } else {
+          // 이미 5개의 태그가 선택되어 있으면, 사용자에게 알림을 표시합니다.
+          alert('최대 5개의 해시태그만 선택할 수 있습니다.');
+          return prevTags;
+        }
       }
     });
   };
@@ -83,6 +91,17 @@ const Comment = (post_id) => {
   const tagList = [
     { id: 1, value: '신기해요' },
     { id: 2, value: '디자인이 예뻐요' },
+    { id: 3, value: '완성도가 높아요' },
+    { id: 4, value: '재밌어요' },
+    { id: 5, value: '창의적이에요' },
+    { id: 6, value: '실용적이에요' },
+    { id: 7, value: '독창적이에요' },
+    { id: 8, value: '디테일이 살아있어요' },
+    { id: 9, value: '감동적이에요' },
+    { id: 10, value: '기술이 좋아요' },
+    { id: 11, value: '체계적이에요' },
+    { id: 12, value: '힐링되어요' },
+    { id: 13, value: '귀여워요' },
   ];
 
   const TagList = tagList.map((data, index) => {
