@@ -69,7 +69,7 @@ export const Names = styled.div`
   이거 해제하니까 졸준위 flex 먹음*/
   display: flex;
   flex-direction: row;
-  flex-basis:100%;
+  flex-basis: 100%;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -98,6 +98,7 @@ export const Area = styled.div`
   :nth-child(3) {
     order: 2;
   } */
+  flex-basis: 100%;
 `;
 
 export const InfoContainer = styled.div`
