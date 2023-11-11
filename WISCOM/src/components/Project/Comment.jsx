@@ -15,7 +15,6 @@ const Comment = (post_id) => {
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 
   useEffect(() => {
-    console.log(nextPostId);
     getDatas();
   }, []);
 
@@ -35,25 +34,26 @@ const Comment = (post_id) => {
     if (inputText.trim() !== '' && name.trim() !== '') {
       e.preventDefault();
       axios
-        .post(`http://15.164.167.225/posts/${nextPostId}/comments`, {
+        .post(`http://15.164.167.225/posts/${nextPostId}/comments/`, {
           name: name,
           content: inputText,
-          comment_tags: [],
+          comment_tags: selectedTags,
         })
         .then((response) => {
           console.log('작성 성공');
-          // window.location.reload();
+          setName(''); // 상태 초기화 위치 변경
+          setInputText(''); // 상태 초기화 위치 변경
+          getDatas(); // 데이터 다시 가져오기
         })
         .catch((error) => {
-          console.log('작성 실패');
-          console.log(error.response.data);
+          console.log('작성 실패', error.message);
         });
+    } else {
+      // 유효하지 않은 입력 처리
+      console.log('유효하지 않은 입력');
     }
-
-    setName([]);
-    setInputText([]);
-    getDatas();
   };
+
   const handleNameChange = (event) => {
     const name = event.target.value;
     if (name.length <= 5) {
@@ -70,22 +70,33 @@ const Comment = (post_id) => {
     }
   };
 
-  const handleTagClick = (tagName) => {
+  const handleTagClick = (tagId) => {
     setSelectedTags((prevTags) => {
-      if (prevTags.includes(tagName)) {
-        return prevTags.filter((tag) => tag !== tagName);
+      if (prevTags.includes(tagId)) {
+        return prevTags.filter((tag) => tag !== tagId);
       } else {
-        return [...prevTags, tagName];
+        return [...prevTags, tagId];
       }
     });
   };
 
   const isSubmitDisabled = inputText === '' || inputText.length > maxLength || name === ''; //완료 버튼 비활성화 조건
 
-  const tagList = ['1번', '2번', '3번', '4번', '5번'];
+  const tagList = [
+    { id: 1, value: '신기해요' },
+    { id: 2, value: '디자인이 예뻐요' },
+  ];
 
   const TagList = tagList.map((data, index) => {
-    return <HashTag tagName={data} key={index} isSelected={selectedTags.includes(data)} onTagClick={handleTagClick} />; //onTagClick={handleTagClick}
+    return (
+      <HashTag
+        tagName={data.value}
+        tagId={data.id}
+        key={index}
+        isSelected={selectedTags.includes(data.id)}
+        onTagClick={handleTagClick}
+      />
+    ); //onTagClick={handleTagClick}
   });
   // 현재 페이지의 댓글 배열
   const startIndex = (currentPage - 1) * entriesPerPage;
@@ -137,9 +148,9 @@ const Comment = (post_id) => {
               </C.CommentInfoWrapper>
 
               {/* Display the selected tags */}
-              {comment.tags && (
+              {comment.comment_tags && (
                 <C.CommentTagsWrapper>
-                  {comment.tags.map((tag, index) => (
+                  {comment.comment_tags.map((tag, index) => (
                     <C.CommentSelectedTag key={index}>
                       <C.CommentP>{tag}</C.CommentP>
                     </C.CommentSelectedTag>
