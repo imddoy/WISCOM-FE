@@ -16,7 +16,6 @@ function AppNavigation() {
   if (location.pathname === '/') {
     return (
       <>
-        <Chatbot />
         <Routes>
           <Route path="/" element={<Main />} />
         </Routes>
@@ -27,7 +26,6 @@ function AppNavigation() {
   // 다른 페이지에서는 네비게이션 표시
   return (
     <>
-      <Chatbot />
       <Nav />
       <GlobalWrapper>
         <Routes>
