@@ -319,6 +319,22 @@ export const DownBox = styled.div`
   gap: 12vw;
   margin-left: ${(props) => (props.isThreeItems ? '0' : '12vw')};
 `;
+export const TeamImpression = styled.p`
+  margin: 0 auto;
+  max-width: 90%;
+  color: #20217d;
+  font-weight: bold;
+  font-size: 1.5vw;
+  word-break: break-all;
+  white-space: normal;
+  @media screen and (max-width: 950px) {
+    font-size: 2.5vw;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 5vw;
+  }
+`;
 
 /*DeveloperProfile 부분*/
 export const DeveloperProfileContainer = styled.div`

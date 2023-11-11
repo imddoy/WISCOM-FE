@@ -28,7 +28,7 @@ export const fadein = keyframes`
 `;
 
 export const AnimationWrapper = styled.div`
-  height: 65vw;
+  height: 70vw;
   position: relative;
   overflow: hidden;
 `;

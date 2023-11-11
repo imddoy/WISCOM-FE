@@ -52,12 +52,12 @@ export default function Router() {
 
 const GlobalWrapper = styled.main`
   @media screen and (min-width: 834px) {
-    padding: 8rem;
+    padding: 4rem;
   }
   @media screen and (max-width: 833px) {
-    padding: 5rem;
+    padding: 2rem;
   }
   @media screen and (max-width: 400px) {
-    padding: 3rem;
+    padding: 2rem;
   }
 `;
