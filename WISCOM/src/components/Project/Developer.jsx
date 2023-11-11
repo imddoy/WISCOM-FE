@@ -41,6 +41,7 @@ const Developer = ({ data }) => {
               />
             ))}
           </D.DownBox>
+          <D.TeamImpression>{data.team_impression}</D.TeamImpression>
         </>
       )}
     </D.DeveloperContainer>
