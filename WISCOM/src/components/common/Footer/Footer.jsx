@@ -57,7 +57,7 @@ const developers = [
 const junior = ['김지민', '김채현', '박소이', '오세은', '한수정'];
 const sophomore = ['김은서', '김희원', '박효진', '이채은', '조수민', '최유리', '황민지'];
 
-const gap = {paddingBottom:'6rem'}
+const gap = { paddingBottom: '6rem' };
 
 const Footer = () => {
   return (
@@ -83,22 +83,23 @@ const Footer = () => {
         <F.Category>졸업전시 준비위원회</F.Category>
         <F.Area>
           <F.Names>
-            <F.NameEach><div>위원장 노하림</div></F.NameEach>
+            <F.NameEach>
+              <div>위원장 노하림</div>
+            </F.NameEach>
             <div style={gap}></div>
           </F.Names>
-          <F.Names>          
+          <F.Names>
             {junior.map((developer, index) => (
               <F.NameEach key={index}>{developer} &nbsp;</F.NameEach>
             ))}
           </F.Names>
           <F.Names>
-              {sophomore.map((developer, index) => (
-                <F.NameEach key={index}>{developer} &nbsp;</F.NameEach>
-              ))}
+            {sophomore.map((developer, index) => (
+              <F.NameEach key={index}>{developer} &nbsp;</F.NameEach>
+            ))}
           </F.Names>
         </F.Area>
       </F.Box>
-
 
       <F.InfoContainer>
         <F.Info>서울 도봉구 삼양로144길 33 덕성여자대학교 과학기술대학 컴퓨터공학전공 </F.Info>

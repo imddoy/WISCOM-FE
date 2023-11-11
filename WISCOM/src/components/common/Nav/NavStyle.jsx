@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Logo from '../../../img/Nav/Logo.svg';
+import Logo from '../../../img/Nav/Logo.png';
 
 export const NavWrapper = styled.div`
   background-color: black;

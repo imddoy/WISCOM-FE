@@ -73,7 +73,7 @@ export const Names = styled.div`
   있을 땐 졸준위 이름 박스가 flex 안먹었음*/
   display: flex;
   flex-direction: row;
-  flex-basis:100%;
+  flex-basis: 100%;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -90,7 +90,7 @@ export const NameEach = styled.div`
 
 export const Area = styled.div`
   flex-direction: column;
-  flex-basis: 100%
+  flex-basis: 100%;
   /* width: 1600px; */
   /* :nth-child(1) {
     order: 0;

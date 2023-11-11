@@ -11,7 +11,7 @@ export default function Content() {
 
   const getDatas = async () => {
     await axios
-      .get(`http://13.124.248.135/guests/`)
+      .get(`http://15.164.167.225/guests/`)
       .then((response) => {
         setData(response.data);
         console.log('성공');
@@ -26,7 +26,7 @@ export default function Content() {
     if (inputText.trim() !== '' && name.trim() !== '') {
       e.preventDefault();
       axios
-        .post(`http://13.124.248.135/guests/`, {
+        .post(`http://15.164.167.225/guests/`, {
           name: name,
           content: inputText,
         })
@@ -77,7 +77,9 @@ export default function Content() {
   const handlePageChange = async (page) => {
     setCurrentPage(page);
     try {
-      const response = await axios.get(`http://13.124.248.135/guests/?limit=${entriesPerPage}&offset=${(page - 1) * entriesPerPage}`);
+      const response = await axios.get(
+        `http://15.164.167.225/guests/?limit=${entriesPerPage}&offset=${(page - 1) * entriesPerPage}`,
+      );
       setData(response.data);
     } catch (error) {
       console.error('페이지 데이터를 불러오는 중 에러 발생:', error);

@@ -25,7 +25,7 @@ const Developer = () => {
   useEffect(() => {
     // Fetch developer data
     axios
-      .get('http://13.124.248.135/developers')
+      .get('http://15.164.167.225/developers')
       .then((response) => {
         setDeveloperData(response.data);
       })
@@ -66,11 +66,7 @@ const Developer = () => {
     const rows = [];
     for (let i = 0; i < developerCards.length; i += 4) {
       const row = developerCards.slice(i, i + 4);
-      rows.push(
-        <D.Box key={i}>
-          {row}
-        </D.Box>
-      );
+      rows.push(<D.Box key={i}>{row}</D.Box>);
     }
 
     return rows;

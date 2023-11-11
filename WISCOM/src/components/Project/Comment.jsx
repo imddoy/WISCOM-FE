@@ -1,27 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import HashTag from './HashTag';
 import * as C from './CommentStyle';
+import axios from 'axios';
 
-const Comment = () => {
-  const [comments, setComments] = useState([]); // 입력된 내용을 저장하는 배열
-  const [newComment, setNewComment] = useState(''); //댓글
+const Comment = (post_id) => {
+  const nextPostId = Number(post_id.id) + 1;
+  const [data, setData] = useState('');
   const [name, setName] = useState(''); //이름
+  const [inputText, setInputText] = useState(''); // 입력된 텍스트를 저장하는 상태
+  const [entries, setEntries] = useState([]);
+  const entriesPerPage = 6; // 한 페이지에 보일 엔트리 개수
   const [selectedTags, setSelectedTags] = useState([]); //해시태그 선택
   const maxLength = 150; // 최대 글자 수
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 
-  const commentsPerPage = 6; // 한 페이지에 보일 댓글 수
-  const [currentPage, setCurrentPage] = useState(1); //페이지
+  useEffect(() => {
+    console.log(nextPostId);
+    getDatas();
+  }, []);
 
+  const getDatas = async () => {
+    await axios
+      .get(`http://15.164.167.225/posts/${nextPostId}/comments`)
+      .then((response) => {
+        setData(response.data);
+        console.log('성공');
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('전체 글 불러오기 실패', error.message);
+      });
+  };
+  const CommentSubmit = (e) => {
+    if (inputText.trim() !== '' && name.trim() !== '') {
+      e.preventDefault();
+      axios
+        .post(`http://15.164.167.225/posts/${nextPostId}/comments`, {
+          name: name,
+          content: inputText,
+          comment_tags: [],
+        })
+        .then((response) => {
+          console.log('작성 성공');
+          // window.location.reload();
+        })
+        .catch((error) => {
+          console.log('작성 실패');
+          console.log(error.response.data);
+        });
+    }
+
+    setName([]);
+    setInputText([]);
+    getDatas();
+  };
   const handleNameChange = (event) => {
-    setName(event.target.value);
+    const name = event.target.value;
+    if (name.length <= 5) {
+      setName(name);
+    }
   };
 
-  const handleCommentChange = (event) => {
-    const text = event.target.value;
-    if (text.length > maxLength) {
-      setNewComment(text.slice(0, maxLength));
+  const handleInputChange = (e) => {
+    const content = e.target.value;
+    if (content.length > maxLength) {
+      setInputText(content.slice(0, maxLength));
     } else {
-      setNewComment(text);
+      setInputText(content);
     }
   };
 
@@ -35,36 +80,17 @@ const Comment = () => {
     });
   };
 
-  const getCurrentDate = () => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-    const day = now.getDate();
-    return `${year} - ${month} - ${day}`;
-  };
-
-  const handleCommentSubmit = () => {
-    const date = getCurrentDate(); // yyyy-mm-dd
-    // Add the new comment to the comments list
-    const newCommentItem = { text: newComment, date, name, tags: selectedTags };
-    setComments([newCommentItem, ...comments]);
-    setNewComment(''); // 댓글 입력창 초기화
-    setName(''); //이름 입력창 초기화
-    setSelectedTags([]); //해시태그 선택 초기화
-  };
-
-  const isSubmitDisabled = newComment === '' || newComment.length > maxLength || name === ''; //완료 버튼 비활성화 조건
+  const isSubmitDisabled = inputText === '' || inputText.length > maxLength || name === ''; //완료 버튼 비활성화 조건
 
   const tagList = ['1번', '2번', '3번', '4번', '5번'];
 
   const TagList = tagList.map((data, index) => {
     return <HashTag tagName={data} key={index} isSelected={selectedTags.includes(data)} onTagClick={handleTagClick} />; //onTagClick={handleTagClick}
   });
-
   // 현재 페이지의 댓글 배열
-  const startIndex = (currentPage - 1) * commentsPerPage;
-  const endIndex = startIndex + commentsPerPage;
-  const currentComments = comments.slice(startIndex, endIndex);
+  const startIndex = (currentPage - 1) * entriesPerPage;
+  const endIndex = startIndex + entriesPerPage;
+  const currentEntries = entries.slice(startIndex, endIndex);
 
   // 페이지 이동
   const handlePageChange = (page) => {
@@ -84,47 +110,50 @@ const Comment = () => {
         />
         <C.CommentTextArea
           placeholder="해시태그 선택 및 댓글을 작성해주세요"
-          value={newComment}
-          onChange={handleCommentChange}
+          value={inputText}
+          onChange={handleInputChange}
           maxLength={maxLength}
         />
-        <C.CommentCharCount>{newComment.length} / 150</C.CommentCharCount>
+        <C.CommentCharCount>
+          {inputText.length} / {maxLength}
+        </C.CommentCharCount>
       </C.CommentTextBox>
 
-      <C.CommentButton onClick={handleCommentSubmit} disabled={isSubmitDisabled}>
+      <C.CommentButton onClick={CommentSubmit} disabled={isSubmitDisabled}>
         완료
       </C.CommentButton>
 
       <C.CommentList>
-        {currentComments.map((comment, index) => (
-          <C.CommentItem key={index}>
-            <C.CommentInfoWrapper>
-              <C.CommentInfo>
-                <C.CommentAuthor>{comment.name}</C.CommentAuthor>
-                <C.CommentDate>{comment.date}</C.CommentDate>
-              </C.CommentInfo>
+        {data &&
+          data.map((comment, index) => (
+            <C.CommentItem key={index}>
+              <C.CommentInfoWrapper>
+                <C.CommentInfo>
+                  <C.CommentAuthor>{comment.name}</C.CommentAuthor>
+                  <C.CommentDate>{comment.created_at}</C.CommentDate>
+                </C.CommentInfo>
 
-              <C.CommentContent>{comment.text}</C.CommentContent>
-            </C.CommentInfoWrapper>
+                <C.CommentContent>{comment.content}</C.CommentContent>
+              </C.CommentInfoWrapper>
 
-            {/* Display the selected tags */}
-            {comment.tags && (
-              <C.CommentTagsWrapper>
-                {comment.tags.map((tag, index) => (
-                  <C.CommentSelectedTag key={index}>
-                    <C.CommentP>{tag}</C.CommentP>
-                  </C.CommentSelectedTag>
-                ))}
-              </C.CommentTagsWrapper>
-            )}
-          </C.CommentItem>
-        ))}
+              {/* Display the selected tags */}
+              {comment.tags && (
+                <C.CommentTagsWrapper>
+                  {comment.tags.map((tag, index) => (
+                    <C.CommentSelectedTag key={index}>
+                      <C.CommentP>{tag}</C.CommentP>
+                    </C.CommentSelectedTag>
+                  ))}
+                </C.CommentTagsWrapper>
+              )}
+            </C.CommentItem>
+          ))}
       </C.CommentList>
 
       {/* 페이지네이션 */}
       <C.CommentPagination>
         <ul>
-          {Array.from({ length: Math.ceil(comments.length / commentsPerPage) }).map((_, index) => (
+          {Array.from({ length: Math.ceil(data.count / entriesPerPage) }).map((_, index) => (
             <li
               key={index}
               onClick={() => handlePageChange(index + 1)}
