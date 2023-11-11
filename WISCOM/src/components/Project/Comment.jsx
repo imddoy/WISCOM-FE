@@ -90,7 +90,7 @@ const Comment = (post_id) => {
   // 현재 페이지의 댓글 배열
   const startIndex = (currentPage - 1) * entriesPerPage;
   const endIndex = startIndex + entriesPerPage;
-  const currentEntries = entries.slice(startIndex, endIndex);
+  const currentEntries = data.slice(startIndex, endIndex);
 
   // 페이지 이동
   const handlePageChange = (page) => {
@@ -124,8 +124,8 @@ const Comment = (post_id) => {
       </C.CommentButton>
 
       <C.CommentList>
-        {data &&
-          data.map((comment, index) => (
+        {currentEntries &&
+          currentEntries.map((comment, index) => (
             <C.CommentItem key={index}>
               <C.CommentInfoWrapper>
                 <C.CommentInfo>
@@ -153,7 +153,7 @@ const Comment = (post_id) => {
       {/* 페이지네이션 */}
       <C.CommentPagination>
         <ul>
-          {Array.from({ length: Math.ceil(data.count / entriesPerPage) }).map((_, index) => (
+          {Array.from({ length: Math.ceil(data.length / entriesPerPage) }).map((_, index) => (
             <li
               key={index}
               onClick={() => handlePageChange(index + 1)}
