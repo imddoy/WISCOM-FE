@@ -90,7 +90,7 @@ export const NameEach = styled.div`
 
 export const Area = styled.div`
   flex-direction: column;
-  flex-basis: 100%
+  flex-basis: 100%;
   /* width: 1600px; */
   /* :nth-child(1) {
     order: 0;
@@ -103,7 +103,6 @@ export const Area = styled.div`
   :nth-child(3) {
     order: 2;
   } */
-  flex-basis: 100%;
 `;
 
 export const InfoContainer = styled.div`
