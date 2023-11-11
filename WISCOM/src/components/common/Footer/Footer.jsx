@@ -54,8 +54,8 @@ const developers = [
   '홍정민',
 ];
 
-const junior = ['김채현', '박소이', '오세은', '한수정'];
-const sophomore = ['김은서', '김희원', '박효진', '이채은', '조수민', '황민지'];
+const junior = ['김지민', '김채현', '박소이', '오세은', '한수정'];
+const sophomore = ['김은서', '김희원', '박효진', '이채은', '조수민', '최유리', '황민지'];
 
 const gap = {paddingBottom:'6rem'}
 
