@@ -20,7 +20,7 @@ const Comment = (post_id) => {
 
   const getDatas = async () => {
     await axios
-      .get(`http://15.164.167.225/posts/${nextPostId}/comments`)
+      .get(`https://wiscom2023.shop/posts/${nextPostId}/comments`)
       .then((response) => {
         setData(response.data);
         console.log('성공');
@@ -34,7 +34,7 @@ const Comment = (post_id) => {
     if (inputText.trim() !== '' && name.trim() !== '') {
       e.preventDefault();
       axios
-        .post(`http://15.164.167.225/posts/${nextPostId}/comments/`, {
+        .post(`https://wiscom2023.shop/posts/${nextPostId}/comments/`, {
           name: name,
           content: inputText,
           comment_tags: selectedTags,

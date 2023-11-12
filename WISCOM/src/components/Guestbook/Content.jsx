@@ -11,7 +11,7 @@ export default function Content() {
 
   const getDatas = async () => {
     await axios
-      .get(`http://15.164.167.225/guests/`)
+      .get(`https://wiscom2023.shop/guests/`)
       .then((response) => {
         setData(response.data);
         console.log('성공');
@@ -26,7 +26,7 @@ export default function Content() {
     if (inputText.trim() !== '' && name.trim() !== '') {
       e.preventDefault();
       axios
-        .post(`http://15.164.167.225/guests/`, {
+        .post(`https://wiscom2023.shop/guests/`, {
           name: name,
           content: inputText,
         })
@@ -78,7 +78,7 @@ export default function Content() {
     setCurrentPage(page);
     try {
       const response = await axios.get(
-        `http://15.164.167.225/guests/?limit=${entriesPerPage}&offset=${(page - 1) * entriesPerPage}`,
+        `https://wiscom2023.shop/guests/?limit=${entriesPerPage}&offset=${(page - 1) * entriesPerPage}`,
       );
       setData(response.data);
     } catch (error) {

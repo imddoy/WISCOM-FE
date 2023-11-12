@@ -41,7 +41,7 @@ export const Box = styled.div`
 `;
 
 export const Category = styled.div`
-  width: 250px;
+  width: 25g0px;
 
   color: white;
   font-size: 20px;
