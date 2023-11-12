@@ -14,8 +14,9 @@ const Likes = (post_id) => {
     setLikes(likes + 1);
     if (isLike === likeImg) {
       setIsLike(likedImg);
+      sendLike();
     } else {
-      setIsLike(likeImg);
+      alert('이미 좋아요를 눌렀습니다.');
     }
   };
   useEffect(() => {
@@ -25,18 +26,32 @@ const Likes = (post_id) => {
     await axios
       .get(`https://wiscom2023.shop/posts/${nextPostId}/like`)
       .then((response) => {
-        setData(response);
+        setData(response.data);
         console.log('성공');
-        console.log(response);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('좋아요 조회 실패', error);
+      });
+    console.log(data);
+  };
+  const sendLike = async () => {
+    await axios
+      .get(`https://wiscom2023.shop/posts/${nextPostId}/like/add`)
+      .then((response) => {
+        setData(response.data);
+        console.log('성공');
+        console.log(response.data);
       })
       .catch((error) => {
         console.log('좋아요 실패', error);
       });
+    console.log(data);
   };
   return (
     <L.LikesWrapper>
       <L.LikesImg src={isLike} alt="image" onClick={handleLikeClick} />
-      <L.LikesSpan>{data.likes}</L.LikesSpan>
+      <L.LikesSpan>{data && data.likes}</L.LikesSpan>
     </L.LikesWrapper>
   );
 };
