@@ -40,8 +40,11 @@ const Likes = (post_id) => {
       .get(`https://wiscom2023.shop/posts/${nextPostId}/like/add`)
       .then((response) => {
         setData(response.data);
+        console.log(response.data.message);
+        if (response.data.message === '좋아요를 누름') {
+          setIsLike(likedImg);
+        }
         console.log('성공');
-        console.log(response.data);
       })
       .catch((error) => {
         console.log('좋아요 실패', error);
