@@ -9,7 +9,6 @@ export const CommentTextBox = styled.div`
   flex-direction: column;
   background-color: #000;
   border-radius: 45px;
-  position: relative;
 
   @media screen and (min-width: 0px) and (max-width: 320px) {
     display: none;
@@ -125,11 +124,10 @@ export const CommentTextArea = styled.textarea`
 
 export const CommentCharCount = styled.p`
   color: #fff;
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
+  text-align: right;
   font-size: 30px;
   font-weight: bold;
+  margin: 0 30px 20px 0;
 
   @media screen and (max-width: 393px) {
     font-size: 16px;
@@ -155,21 +153,14 @@ export const CommentButton = styled.button`
   border-radius: 20px;
   margin: 0 auto;
   display: block;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bold;
   font-family: 'Pretendard';
   margin-bottom: 30px;
 
-  @media screen and (max-width: 393px) {
-    width: 220px;
-  }
-
-  @media screen and (min-width: 393px) and (max-width: 480px) {
-    width: 260px;
-  }
-
-  @media screen and (min-width: 480px) and (max-width: 570px) {
-    width: 330px;
+  @media screen and (max-width: 475px) {
+    width: 100%; /* 모바일 화면에서 가로 가득 차도록 설정합니다. */
+    margin: 0; /* 좌우 마진을 제거합니다. */
   }
 `;
 
@@ -187,6 +178,7 @@ export const CommentItem = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-right: 10px;
 
   @media screen and (min-width: 0px) and (max-width: 700px) {
     margin: 10px;
@@ -208,7 +200,7 @@ export const CommentInfo = styled.div`
 
 export const CommentAuthor = styled.span`
   font-weight: bold;
-  font-size: 25px;
+  font-size: 17px;
   margin-right: 20px;
   @media screen and (min-width: 0px) and (max-width: 700px) {
     font-size: 16px;
@@ -217,7 +209,7 @@ export const CommentAuthor = styled.span`
 
 export const CommentDate = styled.span`
   font-weight: bold;
-  font-size: 25px;
+  font-size: 17px;
 
   @media screen and (min-width: 0px) and (max-width: 700px) {
     font-size: 16px;
@@ -225,26 +217,31 @@ export const CommentDate = styled.span`
 `;
 
 export const CommentContent = styled.div`
-  padding: 15px 5px 15px 15px;
+  width: 100%;
+  padding: 5px 5px 15px 15px;
+
   margin-right: 5px;
   font-weight: bold;
-  font-size: 40px;
-  max-height: 210px;
-  overflow-x: hidden;
+  font-size: 25px;
+  max-height: 300px;
   overflow-y: auto;
+  word-break: break-all;
 
   &::-webkit-scrollbar {
-    width: 20px;
-    border-radius: 10px;
+    width: 10px; /* 스크롤바의 두께 지정 */
+    border-radius: 5px; /* 스크롤바 모서리를 둥글게 만듭니다. */
   }
+
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(32, 33, 125);
-    border-radius: 10px;
+    background-color: #000000;
+    border-radius: 5px;
+    backdrop-filter: blur(50px);
   }
 
   &::-webkit-scrollbar-track {
-    background-color: rgba(32, 33, 125, 0.3);
-    border-radius: 10px;
+    background-color: #d9d9d9; /* 스크롤바 트랙 색상 지정 */
+    border-radius: 5px; /* 스크롤바 모서리를 둥글게 만듭니다. */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2) inset;
   }
 
   @media screen and (min-width: 0px) and (max-width: 700px) {
@@ -283,7 +280,7 @@ export const CommentSelectedTag = styled.div`
 `;
 
 export const CommentP = styled.p`
-  font-size: 26px;
+  font-size: 20px;
   font-weight: bold;
 
   @media screen and (min-width: 319px) and (max-width: 530px) {

@@ -41,7 +41,10 @@ const Comment = (post_id) => {
         })
         .then((response) => {
           console.log('작성 성공');
-          window.location.reload();
+          setName('');
+          setInputText('');
+          setSelectedTags('');
+          getDatas();
         })
         .catch((error) => {
           console.log('작성 실패', error.message);
@@ -164,7 +167,6 @@ const Comment = (post_id) => {
                 <C.CommentContent>{comment.content}</C.CommentContent>
               </C.CommentInfoWrapper>
 
-              {/* Display the selected tags */}
               {comment.comment_tags && (
                 <C.CommentTagsWrapper>
                   {comment.comment_tags.map((tag, index) => (
