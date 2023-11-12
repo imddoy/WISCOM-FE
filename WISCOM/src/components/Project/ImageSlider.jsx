@@ -45,7 +45,7 @@ const ImageSlider = () => {
 
   useEffect(() => {
     const nextPostId = Number(post_id) + 1;
-    fetch(`http://15.164.167.225/posts/${nextPostId}/`, {
+    fetch(`https://wiscom2023.shop/posts/${nextPostId}/`, {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -84,7 +84,7 @@ const ImageSlider = () => {
                 <I.BannerImage
                   key={index}
                   className={`${index === currentIdx ? 'active' : ''}`}
-                  src={`http://15.164.167.225/${image}`}
+                  src={`https://wiscom2023.shop/${image}`}
                   alt={`slide ${index}`}
                 />
               ))}

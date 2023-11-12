@@ -5,7 +5,7 @@ const WorkInfo = ({ data }) => {
     <W.WorkContainer>
       {data && (
         <>
-          <W.WorkLogo src={`http://15.164.167.225/${data.logo}`} alt="작품 로고" />
+          <W.WorkLogo src={`https://wiscom2023.shop/${data.logo}`} alt="작품 로고" />
           <W.WorkInfoContent>
             <W.Text fs="60px">{data.title}</W.Text>
             <W.Text fs="50px">{data.team}</W.Text>
