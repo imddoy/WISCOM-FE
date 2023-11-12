@@ -1,5 +1,5 @@
 import * as D from './DevsStyle';
-import DeveloperProfile from '../Project/DeveloperProfile.jsx';
+import DeveloperProfile from './DevProfile.jsx';
 
 import BackBlue from '../../img/Developer/BackgroundBlue.svg';
 import BackGreen from '../../img/Developer/BackgroundGreen.svg';
