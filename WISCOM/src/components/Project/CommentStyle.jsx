@@ -49,7 +49,7 @@ export const CommentInput = styled.input`
   border: none;
   resize: none;
   color: white;
-  font-size: 30px;
+  font-size: 19px;
   margin: 0px 30px 10px;
   font-family: 'Pretendard';
 
@@ -59,7 +59,7 @@ export const CommentInput = styled.input`
 
   &::placeholder {
     color: #fff;
-    font-size: 30px;
+    font-size: 19px;
     font-family: 'Pretendard';
 
     @media screen and (max-width: 393px) {
@@ -89,7 +89,7 @@ export const CommentTextArea = styled.textarea`
   border: none;
   resize: none;
   color: #fff;
-  font-size: 30px;
+  font-size: 19px;
   font-weight: bold;
   margin: 10px 30px;
   height: 150px;
@@ -101,7 +101,7 @@ export const CommentTextArea = styled.textarea`
 
   &::placeholder {
     color: #fff;
-    font-size: 30px;
+    font-size: 19px;
     font-family: 'Pretendard';
 
     @media screen and (max-width: 393px) {
