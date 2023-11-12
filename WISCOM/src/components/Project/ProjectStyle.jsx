@@ -343,9 +343,12 @@ export const DeveloperProfileContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 15vw;
-  height: 22vw;
+  height: 30vw;
+  @media screen and (max-width: 768px) {
+    height: 40vw;
+  }
   @media screen and (max-width: 400px) {
-    height: 25vw;
+    height: 45vw;
   }
 `;
 export const DeveloperImg = styled.div`
@@ -354,12 +357,25 @@ export const DeveloperImg = styled.div`
   position: relative;
 `;
 export const BackgroundImg = styled.img`
-  height: 12vw;
+  height: 15vw;
+  @media screen and (max-width: 768px) {
+    height: 18vw;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 2.6vw;
+    height: 20vw;
+  }
 `;
 export const PersonalImg = styled.img`
-  height: 12vw;
+  height: 15vw;
   position: absolute;
   bottom: 0;
+  @media screen and (max-width: 768px) {
+    height: 18vw;
+  }
+  @media screen and (max-width: 400px) {
+    height: 20vw;
+  }
 `;
 
 export const Name = styled.div`
@@ -375,19 +391,40 @@ export const Name = styled.div`
 
 export const Impression = styled.div`
   width: 15vw;
-  height: 4.7vw;
+  height: 10vw;
   font-size: 1.2vw;
-  font-weight: bold;
+  font-weight: 300;
   color: #20217d;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: 1vw 0;
+
   &::-webkit-scrollbar {
-    display: none;
-    width: 0;
+    width: 3px;
+    @media screen and (max-width: 768px) {
+      width: 2px;
+    }
+    @media screen and (max-width: 400px) {
+      width: 1px;
+    }
   }
 
+  /*스크롤바 스타일 지정 */
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 1px;
+  }
+
+  /*스크롤바 트랙 스타일 지정 */
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 2vw;
+    height: 30vw;
+  }
   @media screen and (max-width: 400px) {
-    font-size: 1.8vw;
-    height: 8vw;
+    font-size: 2.4vw;
+    height: 25vw;
   }
 `;
