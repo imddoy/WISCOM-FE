@@ -42,7 +42,7 @@ export const Text = styled.p`
   font-weight: 500;
   line-height: normal;
   position: absolute;
-  bottom: 40vw;
+  bottom: 37vw;
   left: 5vw;
   animation: ${fadein} 4s ease-in-out;
 `;
