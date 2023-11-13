@@ -210,6 +210,11 @@ const NavList = () => {
             <N.MenuItemLi className="js-menu-item">
               <N.M_a href="/developer">DEVELOPER</N.M_a>
             </N.MenuItemLi>
+            <N.MenuItemLi className="js-menu-item">
+              <N.M_a href="https://pf.kakao.com/_wymuG/chat" target="_blank">
+                CHAT
+              </N.M_a>
+            </N.MenuItemLi>
           </N.MenuItemList>
         </N.MenuInnerWrapper>
       </N.MenuInner>
