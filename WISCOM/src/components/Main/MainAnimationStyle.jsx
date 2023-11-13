@@ -35,7 +35,7 @@ export const AnimationWrapper = styled.div`
 export const Text = styled.p`
   color: ${(props) => props.theme.colors.white};
   font-family: Pretendard;
-  font-size: 1.7vw;
+  font-size: 1.5vw;
   text-align: center;
   width: 90vw;
   font-style: normal;
