@@ -51,7 +51,7 @@ export const ClickedHashTagWrapper = styled.div`
 
 export const HashTagSpan = styled.div`
   font-size: 24px;
-  font-weight: bold;
+  font-weight: normal;
 
   @media screen and (min-width: 319px) and (max-width: 530px) {
     font-size: 15px;
