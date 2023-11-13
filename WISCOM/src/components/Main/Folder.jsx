@@ -17,7 +17,7 @@ export default function Folder() {
           <F.FolderName>PROJECT</F.FolderName>
         </F.FolderGroup>
 
-        <F.FolderGroup href="https://www.duksung.ac.kr/" target="_blank">
+        <F.FolderGroup href="https://pf.kakao.com/_wymuG/chat" target="_blank">
           <motion.div
             whileHover={{
               scale: 1.2,
@@ -25,7 +25,7 @@ export default function Folder() {
             }}>
             <F.Folder src={FolderImg}></F.Folder>
           </motion.div>
-          <F.FolderName>DSWU</F.FolderName>
+          <F.FolderName>CHAT</F.FolderName>
         </F.FolderGroup>
         <F.FolderGroup href="/guestbook">
           <motion.div
