@@ -25,7 +25,7 @@ const Developer = () => {
   useEffect(() => {
     // Fetch developer data
     axios
-      .get('https://wiscom2023.shop/developers')
+      .get('https://wiscom2023.store/developers')
       .then((response) => {
         setDeveloperData(response.data);
       })

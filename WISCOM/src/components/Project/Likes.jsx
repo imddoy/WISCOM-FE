@@ -24,7 +24,7 @@ const Likes = (post_id) => {
   }, []);
   const getDatas = async () => {
     await axios
-      .get(`https://wiscom2023.shop/posts/${nextPostId}/like`)
+      .get(`https://wiscom2023.store/posts/${nextPostId}/like`)
       .then((response) => {
         setData(response.data);
         console.log('성공');
@@ -37,7 +37,7 @@ const Likes = (post_id) => {
   };
   const sendLike = async () => {
     await axios
-      .get(`https://wiscom2023.shop/posts/${nextPostId}/like/add`)
+      .get(`https://wiscom2023.store/posts/${nextPostId}/like/add`)
       .then((response) => {
         setData(response.data);
         console.log(response.data.message);
