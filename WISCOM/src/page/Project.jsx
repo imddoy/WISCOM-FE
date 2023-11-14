@@ -15,7 +15,7 @@ export default function Project() {
   useEffect(() => {
     const nextPostId = Number(post_id) + 1;
     // 정적 URL을 사용하여 데이터를 가져옵니다.
-    fetch(`http://15.164.167.225/posts/${nextPostId}/`, {
+    fetch(`https://15.164.167.225/posts/${nextPostId}/`, {
       method: 'GET',
     })
       .then((response) => response.json())

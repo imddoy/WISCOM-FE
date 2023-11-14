@@ -25,7 +25,7 @@ const Developer = () => {
   useEffect(() => {
     // Fetch developer data
     axios
-      .get('http://15.164.167.225/developers')
+      .get('https://15.164.167.225/developers')
       .then((response) => {
         setDeveloperData(response.data);
       })
