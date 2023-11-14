@@ -15,13 +15,12 @@ const Comment = (post_id) => {
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 
   useEffect(() => {
-    console.log(nextPostId);
     getDatas();
   }, []);
 
   const getDatas = async () => {
     await axios
-      .get(`https://15.164.167.225/posts/${nextPostId}/comments`)
+      .get(`https://wiscom2023.store/posts/${nextPostId}/comments`)
       .then((response) => {
         setData(response.data);
         console.log('성공');
@@ -35,25 +34,27 @@ const Comment = (post_id) => {
     if (inputText.trim() !== '' && name.trim() !== '') {
       e.preventDefault();
       axios
-        .post(`https://15.164.167.225/posts/${nextPostId}/comments`, {
+        .post(`https://wiscom2023.store/posts/${nextPostId}/comments/`, {
           name: name,
           content: inputText,
-          comment_tags: [],
+          comment_tags: selectedTags,
         })
         .then((response) => {
           console.log('작성 성공');
-          window.location.reload();
+          setName('');
+          setInputText('');
+          setSelectedTags('');
+          getDatas();
         })
         .catch((error) => {
-          console.log('작성 실패');
-          console.log(error.response.data);
+          console.log('작성 실패', error.message);
         });
+    } else {
+      // 유효하지 않은 입력 처리
+      console.log('유효하지 않은 입력');
     }
-
-    setName([]);
-    setInputText([]);
-    getDatas();
   };
+
   const handleNameChange = (event) => {
     const name = event.target.value;
     if (name.length <= 5) {
@@ -70,27 +71,57 @@ const Comment = (post_id) => {
     }
   };
 
-  const handleTagClick = (tagName) => {
+  const handleTagClick = (tagId) => {
     setSelectedTags((prevTags) => {
-      if (prevTags.includes(tagName)) {
-        return prevTags.filter((tag) => tag !== tagName);
+      // 이미 선택된 태그를 클릭한 경우, 그 태그를 제거합니다.
+      if (prevTags.includes(tagId)) {
+        return prevTags.filter((tag) => tag !== tagId);
       } else {
-        return [...prevTags, tagName];
+        // 선택된 태그가 5개 미만인 경우에만 새 태그를 추가합니다.
+        if (prevTags.length < 5) {
+          return [...prevTags, tagId];
+        } else {
+          // 이미 5개의 태그가 선택되어 있으면, 사용자에게 알림을 표시합니다.
+          alert('최대 5개의 해시태그만 선택할 수 있습니다.');
+          return prevTags;
+        }
       }
     });
   };
 
   const isSubmitDisabled = inputText === '' || inputText.length > maxLength || name === ''; //완료 버튼 비활성화 조건
 
-  const tagList = ['1번', '2번', '3번', '4번', '5번'];
+  const tagList = [
+    { id: 1, value: '신기해요' },
+    { id: 2, value: '디자인이 예뻐요' },
+    { id: 3, value: '완성도가 높아요' },
+    { id: 4, value: '재밌어요' },
+    { id: 5, value: '창의적이에요' },
+    { id: 6, value: '실용적이에요' },
+    { id: 7, value: '독창적이에요' },
+    { id: 8, value: '디테일이 살아있어요' },
+    { id: 9, value: '감동적이에요' },
+    { id: 10, value: '기술이 좋아요' },
+    { id: 11, value: '체계적이에요' },
+    { id: 12, value: '힐링되어요' },
+    { id: 13, value: '귀여워요' },
+  ];
 
   const TagList = tagList.map((data, index) => {
-    return <HashTag tagName={data} key={index} isSelected={selectedTags.includes(data)} onTagClick={handleTagClick} />; //onTagClick={handleTagClick}
+    return (
+      <HashTag
+        tagName={data.value}
+        tagId={data.id}
+        key={index}
+        isSelected={selectedTags.includes(data.id)}
+        onTagClick={handleTagClick}
+      />
+    ); //onTagClick={handleTagClick}
   });
   // 현재 페이지의 댓글 배열
   const startIndex = (currentPage - 1) * entriesPerPage;
   const endIndex = startIndex + entriesPerPage;
-  const currentEntries = entries.slice(startIndex, endIndex);
+  const currentEntries = data.slice(startIndex, endIndex);
 
   // 페이지 이동
   const handlePageChange = (page) => {
@@ -124,8 +155,8 @@ const Comment = (post_id) => {
       </C.CommentButton>
 
       <C.CommentList>
-        {data &&
-          data.map((comment, index) => (
+        {currentEntries &&
+          currentEntries.map((comment, index) => (
             <C.CommentItem key={index}>
               <C.CommentInfoWrapper>
                 <C.CommentInfo>
@@ -136,10 +167,9 @@ const Comment = (post_id) => {
                 <C.CommentContent>{comment.content}</C.CommentContent>
               </C.CommentInfoWrapper>
 
-              {/* Display the selected tags */}
-              {comment.tags && (
+              {comment.comment_tags && (
                 <C.CommentTagsWrapper>
-                  {comment.tags.map((tag, index) => (
+                  {comment.comment_tags.map((tag, index) => (
                     <C.CommentSelectedTag key={index}>
                       <C.CommentP>{tag}</C.CommentP>
                     </C.CommentSelectedTag>
@@ -153,7 +183,7 @@ const Comment = (post_id) => {
       {/* 페이지네이션 */}
       <C.CommentPagination>
         <ul>
-          {Array.from({ length: Math.ceil(data.count / entriesPerPage) }).map((_, index) => (
+          {Array.from({ length: Math.ceil(data.length / entriesPerPage) }).map((_, index) => (
             <li
               key={index}
               onClick={() => handlePageChange(index + 1)}

@@ -1,5 +1,5 @@
 import * as D from './DevsStyle';
-import DeveloperProfile from '../Project/DeveloperProfile.jsx';
+import DeveloperProfile from './DevProfile.jsx';
 
 import BackBlue from '../../img/Developer/BackgroundBlue.svg';
 import BackGreen from '../../img/Developer/BackgroundGreen.svg';
@@ -25,7 +25,7 @@ const Developer = () => {
   useEffect(() => {
     // Fetch developer data
     axios
-      .get('https://15.164.167.225/developers')
+      .get('https://wiscom2023.store/developers')
       .then((response) => {
         setDeveloperData(response.data);
       })

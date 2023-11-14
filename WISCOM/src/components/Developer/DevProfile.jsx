@@ -1,4 +1,4 @@
-import * as DP from './ProjectStyle';
+import * as DP from './DevsStyle';
 
 const DeveloperProfile = (props) => {
   return (

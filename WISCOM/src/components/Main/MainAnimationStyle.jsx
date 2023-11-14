@@ -28,14 +28,14 @@ export const fadein = keyframes`
 `;
 
 export const AnimationWrapper = styled.div`
-  height: 65vw;
+  height: 70vw;
   position: relative;
   overflow: hidden;
 `;
 export const Text = styled.p`
   color: ${(props) => props.theme.colors.white};
   font-family: Pretendard;
-  font-size: 1.7vw;
+  font-size: 1.5vw;
   text-align: center;
   width: 90vw;
   font-style: normal;
@@ -114,7 +114,7 @@ export const Respect = styled.p`
   line-height: normal;
   position: absolute;
   transform: rotate(-70deg);
-  bottom: 29vw;
+  bottom: 28.5vw;
   left: 53vw;
   opacity: 0;
   animation: ${drop} 0.9s ease-out 0.6s forwards;

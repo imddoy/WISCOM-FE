@@ -35,7 +35,6 @@ export const InputBox = styled.div`
   margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
   margin-bottom: 30px;
   padding: 40px;
-
 `;
 
 export const CommentInput = styled.input`
@@ -97,9 +96,7 @@ export const InputCount = styled.div`
   text-align: right; /* 텍스트를 오른쪽 정렬합니다. */
   margin-right: 20px;
   margin-top: 5px;
-
 `;
-
 
 export const Button = styled.button`
   width: 380px;
@@ -133,7 +130,6 @@ export const Entries = styled.div`
   margin: 0 auto;
   margin-top: 30px;
   max-width: 100%;
-
 `;
 
 export const EntryItem = styled.div`
@@ -169,7 +165,6 @@ export const EntryDate = styled.span`
 
 export const EntryText = styled.span`
   font-size: 18px;
-
 `;
 
 export const EntryWrapper = styled.div`
@@ -192,7 +187,7 @@ export const EntryWrapper = styled.div`
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #D9D9D9; /* 스크롤바 트랙 색상 지정 */
+    background-color: #d9d9d9; /* 스크롤바 트랙 색상 지정 */
     border-radius: 5px; /* 스크롤바 모서리를 둥글게 만듭니다. */
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2) inset;
   }

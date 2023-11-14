@@ -48,6 +48,9 @@ const Nav = () => {
         <N.NavTag href="/map">PROJECT</N.NavTag>
         <N.NavTag href="/guestbook">GUESTBOOK</N.NavTag>
         <N.NavTag href="/developer">DEVELOPER</N.NavTag>
+        <N.NavTag href="https://pf.kakao.com/_wymuG/chat" target="_blank">
+          CHAT
+        </N.NavTag>
         <NavList />
       </N.NavContent>
 
